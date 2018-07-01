@@ -1,6 +1,6 @@
 /*
  * @Author:
- *  #Jiabin Xu   | zsiothsu(at)zhishan-iot.ga
+ *  #Jiabin Hsu  | zsiothsu(at)zhishan-iot.ga
  *  #Weilun Fong | wlf(at)zhishan-iot.ga
  * @E-mail:mcu(at)zhishan-iot.ga
  * @File-description:operations for uart resource

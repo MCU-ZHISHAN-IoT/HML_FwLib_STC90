@@ -1,6 +1,6 @@
 /*
  * @Author:
- *  #Jiabin Hsu  | zsiothsu(at)zhishan-iot.ga
+ *  #Jiabin Hsu | zsiothsu(at)zhishan-iot.ga
  * @E-mail:mcu(at)zhishan-iot.ga
  * @File-description:operations for timer_2 resource
  * @Required-compiler:SDCC

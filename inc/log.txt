@@ -1,0 +1,23 @@
+#FwLib       :HML_FwLib_STC90
+#Description :record file about HML_FwLib_STC90
+#E-mail      :mcu(at)zhishant-iot.ga
+#Organization:ZHISHAN-IoT(https://zhishan-iot.ga)
+#Page        :https://hw.zhishant-iot.ga/page/hml/detail/fwlib_stc90.html
+
+#RELEASE RECORD
+>Version :v0.0.0
+ Alias   :
+ Date    :2018-06-05
+ Note    :The first version of HML_FwLib_STC90!
+		  
+#DEVELOPER
+Jiabin Hsu  (zsiothsu@zhishan-iot.ga)
+Weilun Fong (wlf@zhishan-iot.ga)
+ 
+#TEAM of HML
+>Director: 
+ Weilun Fong (wlf@zhishan-iot.ga)
+>Editor
+ Liang Wu (waleema@zhishan-iot.ga)
+>MCU developer:
+Jiabin Hsu (zsiothsu@zhishan-iot.ga)

@@ -1,6 +1,6 @@
 /*
  * @Author:
- *  #Jiabin Hsu | zsiothsu(at)zhishan-iot.ga
+ *  #Jiabin Hsu  | zsiothsu(at)zhishan-iot.ga
  *  #Weilun Fong | wlf(at)zhishan-iot.ga
  * @E-mail:mcu(at)zhishan-iot.ga
  * @File-description:includes some macro definitions that used frequently
@@ -36,16 +36,16 @@ typedef enum
 #define MCU_STC90LE52RC   2
 #define MCU_STC90C12RC    3
 #define MCU_STC90LE12RC   3
-#define MCU_STC90C54RDP    4
-#define MCU_STC90LE54RDP   4
-#define MCU_STC90C58RDP    5
-#define MCU_STC90LE58RDP   5
-#define MCU_STC90C510RDP   6
-#define MCU_STC90LE510RDP  6
-#define MCU_STC90C512RDP   7
-#define MCU_STC90LE512RDP  7
-#define MCU_STC90C514RDP   8
-#define MCU_STC90LE514RDP  8
+#define MCU_STC90C54RD    4
+#define MCU_STC90LE54RD   4
+#define MCU_STC90C58RD    5
+#define MCU_STC90LE58RD   5
+#define MCU_STC90C510RD   6
+#define MCU_STC90LE510RD  6
+#define MCU_STC90C512RD   7
+#define MCU_STC90LE512RD  7
+#define MCU_STC90C514RD   8
+#define MCU_STC90LE514RD  8
 
 /* ---------- NEED TO BE SETTED ---------- */
 #define MCU_MODEL MCU_STC90C52RC

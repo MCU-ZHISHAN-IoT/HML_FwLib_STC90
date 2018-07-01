@@ -44,26 +44,26 @@ typedef enum
 	#define ISP_beginAddress 0x3000
 	#define ISP_endAddress 0x33FF
 	
-#else 
+#else
 	#define ISP_endAddress 0xF3FF
-	#if (MCU_MODEL == MCU_STC90C54RDP)    || \
-        (MCU_MODEL == MCU_STC90LE54RDP)
+	#if (MCU_MODEL == MCU_STC90C54RD)    || \
+        (MCU_MODEL == MCU_STC90LE54RD)
 		#define ISP_beginAddress 0x4000
-	#elif (MCU_MODEL == MCU_STC90C58RDP)  || \
-	      (MCU_MODEL == MCU_STC90LE58RDP)
+	#elif (MCU_MODEL == MCU_STC90C58RD)  || \
+	      (MCU_MODEL == MCU_STC90LE58RD)
 		#define ISP_beginAddress 0x8000
-	#elif (MCU_MODEL == MCU_STC90C510RDP) || \
-	      (MCU_MODEL == MCU_STC90LE510RDP)
+	#elif (MCU_MODEL == MCU_STC90C510RD) || \
+	      (MCU_MODEL == MCU_STC90LE510RD)
 		#define ISP_beginAddress 0xA000
-	#elif (MCU_MODEL == MCU_STC90C512RDP) || \
-	      (MCU_MODEL == MCU_STC90LE512RDP)
+	#elif (MCU_MODEL == MCU_STC90C512RD) || \
+	      (MCU_MODEL == MCU_STC90LE512RD)
 		#define ISP_beginAddress 0xC000
-	#elif (MCU_MODEL == MCU_STC90C514RDP) || \
-	      (MCU_MODEL == MCU_STC90LE514RDP)
+	#elif (MCU_MODEL == MCU_STC90C514RD) || \
+	      (MCU_MODEL == MCU_STC90LE514RD)
 		#define ISP_beginAddress 0xE000
 	#endif /* else */
 
-#endif/* MCU_MODEL RC/RDP */
+#endif/* MCU_MODEL RC/RD */
 	
 /* ---------- @function --------- */
 void ISP_cmd(Action a);
