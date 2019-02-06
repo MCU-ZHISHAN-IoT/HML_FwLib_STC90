@@ -11,59 +11,63 @@
 
 #include "util.h"
 
+#ifdef ___COMPILE_UTIL___
+
 /*
- * @Protype:void disableAllInterrupts(void)
+ * @Prototype:void disableAllInterrupts(void)
  * @Parameter:
  * @Ret-val:
  * @Note:disable all interrupts
  */
 void disableAllInterrupts(void)
 {
-	EA = DISABLE;
+    EA = DISABLE;
 }
 
 /*
- * @Protype:void enableAllInterrupts(void)
+ * @Prototype:void enableAllInterrupts(void)
  * @Parameter:
  * @Ret-val:
- * @Note:enable total switch of intterupts
+ * @Note:enable total switch of interrupts
  */
 void enableAllInterrupts(void)
 {
-	EA = ENABLE;
+    EA = ENABLE;
 }
 
 /*
- * @Protype:void sleep(u16 t)
+ * @Prototype:void sleep(u16 t)
  * @Parameter:(1)how many ms users expected
  * @Ret-val:
  * @Note:software delay according to frequency of crystal oscillator
  */
 void sleep(unsigned int t)
 {
-	u8 i = 0x00;
-	u8 j = 0x00;
-	
-	#if ( _FRE_OSC_ == 11059200L )
+    u8 i = 0x00;
+    u8 j = 0x00;
+    
+    #if ( _FRE_OSC_ == 11059200L )
 
-		while(t--)
-		{
-			j = 110;
-			while(j--);
-		}
-		
-	//TODO
-	#elif ( _FRE_OSC_ == 12000000L )
+        while(t--)
+        {
+            j = 110;
+            while(j--);
+        }
+        
+    //TODO
+    #elif ( _FRE_OSC_ == 12000000L )
 
-		while(t--)
-		{
-			j = 120;
-			while(j--);
-		}
-		
-	#else
-		
-	//TODO
-	
-	#endif
+        while(t--)
+        {
+            j = 120;
+            while(j--);
+        }
+        
+    #else
+        
+    //TODO
+    
+    #endif
 }
+
+#endif

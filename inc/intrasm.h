@@ -1,7 +1,7 @@
 /*
  * @Author:
- *  #Weilun Fong | wlf(at)zhishan-iot.ga
- * @E-mail:mcu(at)zhishan-iot.ga
+ *  #Weilun Fong | wlf(at)zhishan-iot.tk
+ * @E-mail:mcu(at)zhishan-iot.tk
  * @File-description:
  *  #provides prototypes for routines that instruct the compiler to generate intrinsic code
  *  #have similar functions like intrasm.h in Keil

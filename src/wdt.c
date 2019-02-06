@@ -10,46 +10,50 @@
  
 #include "wdt.h"
 
+#ifdef ___COMPILE_WDT___
+
 /*
- * @Protype:void WDT_clear(void)
+ * @Prototype:void WDT_clear(void)
  * @Parameter:
  * @Ret-val:
  * @Note:feeds the watch dog 
  */
 void WDT_clear(void)
 {
-	WDT_CONTR = WDT_CONTR | 0x10;
+    WDT_CONTR = WDT_CONTR | 0x10;
 }
 
 /*
- * @Protype:void WDT_cmd(Action a)
+ * @Prototype:void WDT_cmd(Action a)
  * @Parameter:(1)a:expected action
  * @Ret-val:
- * @Note:lanuch or stop watch dog
+ * @Note:launch or stop watch dog
  */
 void WDT_cmd(Action a)
 {
-	WDT_CONTR = (WDT_CONTR & 0xDF) | (a << 0x5);
+    WDT_CONTR = (WDT_CONTR & 0xDF) | (a << 0x5);
 }
 
 /*
- * @Protype:void WDT_cmd_idleCount(Action a)
+ * @Prototype:void WDT_cmd_idleCount(Action a)
  * @Parameter:(1)a:expected action
  * @Ret-val:
  * @Note:enable or disable watch dog when idle mode
  */
 void WDT_cmd_idleCount(Action a)
 {
-	WDT_CONTR = (WDT_CONTR & 0xF7) | (a << 0x3);
+    WDT_CONTR = (WDT_CONTR & 0xF7) | (a << 0x3);
 }
 
 /*
- * @Protype:void WDT_setPrescale(WDT_Prescale pre)
+ * @Prototype:void WDT_setPrescale(WDT_prescale pre)
  * @Parameter:(1)pre:prescale factor
  * @Ret-val:
  * @Note:set prescale
  */
-void WDT_setPrescale(WDT_Prescale pre)
+void WDT_setPrescale(WDT_prescale pre)
 {
-	WDT_CONTR = (WDT_CONTR & 0xF8) | pre;
+    WDT_CONTR = (WDT_CONTR & 0xF8) | pre;
 }
+
+#endif

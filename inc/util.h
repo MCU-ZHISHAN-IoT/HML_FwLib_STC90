@@ -11,14 +11,12 @@
 #ifndef ___UTIL_H___
 #define ___UTIL_H___
 
+/* ----- @header file ----- */
+#include <stc89.h>
 #include "macro.h"
-#include "tim.h"
-#include "isp.h"
 
-
-/* ---------- @function --------- */
+/* ----- @function ----- */
 void disableAllInterrupts(void);
 void enableAllInterrupts(void);
 void sleep(unsigned int t);
-
-#endif /* ___UTIL_H___ */
+#endif
