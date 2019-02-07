@@ -13,10 +13,13 @@
 #define ___TIM2_H___
 
 /* ----- @header file ----- */
-#include <stc89.h>
+#include <stc90.h>
 #include <stdbool.h>
 #include "exti.h"
 #include "macro.h"
+
+/* ----- @macro define ------ */
+#define TIM2_MAXTICK 0xFFFF
 
 /* ----- @enumeration type ----- */
 /* mark work mode of TIM2 */

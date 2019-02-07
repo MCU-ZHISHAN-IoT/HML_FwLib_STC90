@@ -13,7 +13,7 @@
 #define ___TIM_H___
 
 /* ----- @header file ----- */
-#include <stc89.h>
+#include <stc90.h>
 #include <stdbool.h>
 
 #include "exti.h"
