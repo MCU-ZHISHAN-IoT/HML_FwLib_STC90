@@ -1,7 +1,7 @@
 # HML_FwLib_STC90
 [![BuildStatus](https://img.shields.io/badge/build-passing-brightgreen.svg)](https://hw.zhishan-iot.tk/page/hml/detail/fwlib_st90.html)
 [![License](https://img.shields.io/badge/license-WTFPL2-blue.svg)](http://wtfpl2.com/)
-[![MCU](https://img.shields.io/badge/mcu-stc10-orange.svg)](http://www.stcmcu.com/)
+[![MCU](https://img.shields.io/badge/mcu-stc90-orange.svg)](http://www.stcmcu.com/)
 ## What is HML_FwLib_STC90
 HML_FwLib_STC90 is a member component of HML firmware library, **providing a group of interface functions for users to operate on-chip resource of STC90 MCUs**, including GPIO, ISP, timer, UART, external interrupt and watchdog. The STC89 MCU is a kind of Intel MCS-51 based MCU which released by [STC Micro](http://www.stcmcu.com/)(*宏晶*). This series MCU have more on-chip resource than classical 8051 MCU.
 
@@ -48,7 +48,7 @@ Certainly, you can just add *inc* and *src* directory into your project structur
 Welcome suggestions and contribution from you! You can fork it or contact us via *[mcu@zhishan-iot.tk](mailto:mcu@zhishan-iot.tk)*.
 
 ## License
-HML_FwLib_sSTC90 is licensed under the [WTPL2](http://wtfpl2.com/).
+HML_FwLib_STC90 is licensed under the [WTPL2](http://wtfpl2.com/).
 
 ##  Team
 
