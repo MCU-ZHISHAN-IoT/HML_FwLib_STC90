@@ -54,7 +54,7 @@ typedef enum
 //TODO: STC90 AD series
 
 /* ---------- NEED TO CONFIG MANUALLY !!! ---------- */
-#define _MCU_MODEL_ _MCU_STC89C52RC_
+#define _MCU_MODEL_ _MCU_STC90C52RC_
 
 /* configure clock frequency */
 #define _FRE_OSC_ 11059200L
