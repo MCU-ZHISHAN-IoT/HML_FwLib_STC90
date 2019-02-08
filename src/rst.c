@@ -8,6 +8,8 @@
  * @Version:V0
  */
 
+#include "rst.h"
+ 
 #ifdef ___COMPILE_RST___
 
 /*

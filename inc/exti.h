@@ -40,7 +40,7 @@ typedef enum
     INTR_priority_1 = 0x01,
     INTR_priority_2 = 0x02,
     INTR_priority_3 = 0x03,
-} 
+} INTR_priority;
 
 /* ----- @structure define ----- */
 /* configuration structure */
