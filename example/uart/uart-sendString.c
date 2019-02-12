@@ -1,6 +1,6 @@
 /*
  * @Author:
- *  #Weilun Fong | wlf(at)zhishan-iot.ga
+ *  #Amy Chung | zhongliguo@zhishan-iot.tk
  * @E-mail:mcu(at)zhishan-iot.ga
  * @File-description:a demo which shows how to use the library to send string via UART module
  * @Required-compiler:SDCC
@@ -18,27 +18,28 @@
  */
 void sys_init(void)
 {
-	UART_configTypeDef uc;
-	
-	uc.baudrate = 9600;
-	uc.interruptsState = ENABLE;
-	uc.intterruptPriority = DISABLE;
-	uc.mode = UART_MODE_1;
-	uc.multiBaudrate = DISABLE;
-	uc.receiveState  = ENABLE;
-	uc.tim = PERIPH_TIM_1;
-	
-	UART_config(&uc);
-	enableAllInterrupts();
+    UART_configTypeDef uc;
+    
+    uc.baudrate = 9600;
+    uc.baudGenerator = PERIPH_TIM_2;
+    uc.interruptState = ENABLE;
+    uc.interruptPriority = DISABLE;
+    uc.mode = UART_mode_1;
+    uc.multiBaudrate = DISABLE;
+    uc.receiveState  = ENABLE;
+    
+    UART_config(&uc);
+    enableAllInterrupts();
 }
 
+/* ----- @main ----- */
 void main(void)
 {
-	sys_init();
-	while(true)
-	{
-		/* send per 500ms */
-		sleep(500);
-		UART_sendString("Hello,world\r\n");
-	}
+    sys_init();
+    while(true)
+    {
+        /* send per 500ms */
+        sleep(500);
+        UART_sendString("Hello,world\r\n");
+    }
 }

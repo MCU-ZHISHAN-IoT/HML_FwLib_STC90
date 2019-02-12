@@ -1,6 +1,6 @@
 /*
  * @Author:
- *  #Weilun Fong | wlf(at)zhishan-iot.ga
+ *  #Amy Chung | zhongliguo@zhishan-iot.tk
  * @E-mail:mcu(at)zhishan-iot.ga
  * @File-description:a demo which shows how to use HML to toggle P1_0 state when EXTI trigged
  * @Required-compiler:SDCC
@@ -10,6 +10,7 @@
 
 #include "conf.h"
 
+
 /*
  * @Protype:void sys_init(void)
  * @Parameter:None
@@ -18,15 +19,15 @@
  */
 void sys_init(void)
 {
-	EXTI_configTypeDef ec;
-	
-	ec.mode = EXTI_MOD_FAL;
-	ec.priority = DISABLE;
-	EXTI_config(PERIPH_EXTI_1,&ec);
-	EXTI_cmd(PERIPH_EXTI_1,ENABLE);
-	enableAllInterrupts();
-	
-	GPIO_configPort(PERIPH_GPIO_1,0xFF);
+    EXTI_configTypeDef ec;
+    
+    ec.mode = EXTI_mode_fallEdge;
+    ec.priority = INTR_priority_0;
+    EXTI_config(PERIPH_EXTI_1,&ec);
+    EXTI_cmd(PERIPH_EXTI_1,ENABLE);
+    enableAllInterrupts();
+    
+    GPIO_configPort(PERIPH_GPIO_1,0xFF);
 }
 
 void main(void)
@@ -43,5 +44,15 @@ void main(void)
  */
 void exti1_isr(void) __interrupt IE1_VECTOR
 {
-	GPIO_toggleBitValue(PERIPH_GPIO_1,PERIPH_GPIO_Pin_2);
+    /* avoid shake */
+    disableAllInterrupts();
+    sleep(20);
+
+    /* make sure the button connected to P33(INT1) */
+    if(GPIO_getBitValue(PERIPH_GPIO_3,PERIPH_GPIO_PIN_3) == RESET)
+    {
+        GPIO_toggleBitValue(PERIPH_GPIO_1,PERIPH_GPIO_PIN_2);
+    }
+    /* recover */
+    enableAllInterrupts();
 }

@@ -1,6 +1,6 @@
 /*
  * @Author:
- *  #Jiabin Hsu | zsiothsu(at)zhishan-iot.ga
+ *  #Amy Chung | zhongliguo@zhishan-iot.tk
  * @File-description:show how to use firmware library to
  *                   config and feed watchdog
  * @Required-complier:SDCC
@@ -17,32 +17,33 @@
  */
 void sys_init(void)
 {
-	UART_configTypeDef uc;
-	
-	uc.baudrate = 9600;
-	uc.interruptsState = ENABLE;
-	uc.intterruptPriority = DISABLE;
-	uc.mode = UART_MODE_1;
-	uc.multiBaudrate = DISABLE;
-	uc.receiveState  = ENABLE;
-	uc.tim = PERIPH_TIM_1;
-	
-	UART_config(&uc);
-	enableAllInterrupts();
+    UART_configTypeDef uc;
+    
+    uc.baudrate = 9600;
+    uc.baudGenerator = PERIPH_TIM_1;
+    uc.interruptState = ENABLE;
+    uc.interruptPriority = DISABLE;
+    uc.mode = UART_mode_1;
+    uc.multiBaudrate = DISABLE;
+    uc.receiveState  = ENABLE;
+    
+    UART_config(&uc);
+    enableAllInterrupts();
 }
 
+/* ----- @main ----- */
 void main(void)
 {
-	sys_init();
-	UART_sendString("MCU boot");
-	WDT_setPrescale(WDT_Prescale_32);
-	WDT_cmd(ENABLE);
-	
-	while(true)
-	{
-		/*feed watchdog per 500ms*/
-		sleep(500);
-		WDT_clear();
-		UART_sendString("watch dog has been feeded");
-	}
+    sys_init();
+    UART_sendString("MCU boot");
+    WDT_setPrescale(WDT_prescale_32);
+    WDT_cmd(ENABLE);
+    
+    while(true)
+    {
+        /*feed watchdog per 500ms*/
+        sleep(500);
+        WDT_clear();
+        UART_sendString("root@localboard:Watch dog has been feeded\r\n");
+    }
 }
