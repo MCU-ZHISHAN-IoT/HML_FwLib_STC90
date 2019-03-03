@@ -3,7 +3,7 @@
 [![License](https://img.shields.io/badge/license-WTFPL2-blue.svg)](http://wtfpl2.com/)
 [![MCU](https://img.shields.io/badge/mcu-stc90-orange.svg)](http://www.stcmcu.com/)
 ## What is HML_FwLib_STC90
-HML_FwLib_STC90 is a member component of HML firmware library, **providing a group of interface functions for users to operate on-chip resource of STC90 MCUs**, including GPIO, ISP, timer, UART, external interrupt and watchdog. The STC89 MCU is a kind of Intel MCS-51 based MCU which released by [STC Micro](http://www.stcmcu.com/)(*宏晶*). This series MCU have more on-chip resource than classical 8051 MCU.
+HML_FwLib_STC90 is a member component of HML firmware library, **providing a group of interface functions for users to operate on-chip resource of STC90 MCUs(except for STC90-AD series)**, including GPIO, ISP, timer, UART, external interrupt and watchdog. The STC89 MCU is a kind of Intel MCS-51 based MCU which released by [STC Micro](http://www.stcmcu.com/)(*宏晶*). This series MCU have more on-chip resource than classical 8051 MCU.
 
 We intend to provide a lite and easy-use firmware library that can help future developers to complete projects based on STC90 MCUs more easily and quickly. All source codes are written in C language and for [SDCC compiler](http://sdcc.sourceforge.net/), i.e., it can only be compiled by SDCC. This choice is motivated by the fact that SDCC is free and highly efficient, while there are very few examples of application about SDCC on the Internet. We hope that, as one of the early attempts to develop MCU projects using SDCC, this work will make SDCC become more popular among MCU developers.<br>
 
@@ -11,7 +11,7 @@ Please visit [detail page](https://hw.zhishan-iot.tk/page/hml/detail/fwlib_stc90
 
 ## Feature
 + :dart:Based on [SDCC compiler](http://sdcc.sourceforge.net/).
-+ Cover all on-chip resource of STC89 series MCUs.
++ Cover all on-chip resource of STC90 series MCUs.
 + Open all source code on [Github](https://github.com) and licensed under the [WTPL2](http://wtfpl2.com/).
 + Readable code and provide examples to help you get started it.
 

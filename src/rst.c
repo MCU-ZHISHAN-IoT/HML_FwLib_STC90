@@ -4,7 +4,7 @@
  * @E-mail:mcu(at)zhishan-iot.tk
  * @File-description:operations of reset resource
  * @Required-compiler:SDCC
- * @Support-mcu:STC micro STC90 series
+ * @Support-mcu:STC micro STC90-RC/RD+ series
  * @Version:V0
  */
 
@@ -20,9 +20,9 @@
  */
 void RST_reset(RST_bootarea area)
 {
-    ISP_CONTR = ISP_CONTR | 0x80;
-    ISP_CONTR = (ISP_CONTR & 0xBF) | (area << 0x6);
-    ISP_CONTR = ISP_CONTR | 0x20;
+    ISP_CONTR = SET_BIT_MASK(ISP_CONTR,ISPEN);
+    ISP_CONTR = CONFB(ISP_CONTR,BIT_NUM_SWBS,area);
+    ISP_CONTR = SET_BIT_MASK(ISP_CONTR,SWRST);
 }
 
 #endif

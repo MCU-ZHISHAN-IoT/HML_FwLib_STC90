@@ -3,9 +3,9 @@
  *  #Jiabin Hsu  | zsiothsu(at)zhishan-iot.tk
  *  #Weilun Fong | wlf(at)zhishan-iot.tk
  * @E-mail:mcu(at)zhishan-iot.tk
- * @File-description:operations for uart resource
+ * @File-description:operations for UART resource
  * @Required-compiler:SDCC
- * @Support-mcu:STC micro STC90 series
+ * @Support-mcu:STC micro STC90-RC/RD+ series
  * @Version:V0
  */
 
@@ -21,7 +21,7 @@
  */
 void UART_cmd_multiBaudrate(Action a)
 {
-    PCON = (PCON & 0x7F) | ((unsigned char)a << 0x7);
+    PCON = CONFB(PCON,BIT_NUM_SMOD,a);
 }
 
 /*
@@ -230,8 +230,8 @@ void UART_INT_cmd(Action a)
  */
 void UART_INT_setPriority(INTR_priority p)
 {
-    IP  = (IP & 0xEF)  | ((p & 0x01) << 0x4);
-    IPH = (IPH & 0xEF) | ((p & 0x02) << 0x3);
+    PS  = TESTB(p,0);
+    IPH = CONFB(IPH,BIT_NUM_PSH,TESTB(p,1));
 }
 
 #endif

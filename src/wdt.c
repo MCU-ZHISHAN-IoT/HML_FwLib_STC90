@@ -1,10 +1,10 @@
 /*
  * @Author:
- *  #Jiabin Hsu | zsiothsu(at)zhishan-iot.ga
- * @E-mail:mcu(at)zhishan-iot.ga
+ *  #Jiabin Hsu | zsiothsu(at)zhishan-iot.tk
+ * @E-mail:mcu(at)zhishan-iot.tk
  * @File-description:operations for watch dog resource
  * @Required-compiler:SDCC
- * @Support-mcu:STC micro STC90 series
+ * @Support-mcu:STC micro STC90-RC/RD+ series
  * @Version:V0
  */
  
@@ -20,7 +20,7 @@
  */
 void WDT_clear(void)
 {
-    WDT_CONTR = WDT_CONTR | 0x10;
+    WDT_CONTR = SET_BIT_MASK(WDT_CONTR,CLR_WDT);
 }
 
 /*
@@ -31,7 +31,7 @@ void WDT_clear(void)
  */
 void WDT_cmd(Action a)
 {
-    WDT_CONTR = (WDT_CONTR & 0xDF) | (a << 0x5);
+    WDT_CONTR = CONFB(WDT_CONTR,BIT_NUM_EN_WDT,a);
 }
 
 /*
@@ -42,7 +42,7 @@ void WDT_cmd(Action a)
  */
 void WDT_cmd_idleCount(Action a)
 {
-    WDT_CONTR = (WDT_CONTR & 0xF7) | (a << 0x3);
+    WDT_CONTR = CONFB(WDT_CONTR,BIT_NUM_IDLE_WDT,a);
 }
 
 /*

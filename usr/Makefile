@@ -4,7 +4,7 @@
 #E-mail     :mcu(at)zhishan-iot.tk
 #Make-tool  :GNU Make (http://www.gnu.org/software/make/manual/make.html)
 #Page       :https://hw.zhishan-iot.tk/page/hml/detail/fwlib_stc90.html
-#Tar-mcu    :STC micro STC90 series (STC90C52RC, STC90C54RD+, etc.)
+#Tar-mcu    :STC micro STC90-RC/RD+ series (STC90C52RC, STC90C54RD+, etc.)
 #Tar-project:HML_FwLib_STC90
 #Version    :v0.1.2
 

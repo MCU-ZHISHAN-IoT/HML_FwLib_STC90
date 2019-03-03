@@ -1,8 +1,7 @@
 /*
  * @Author:
  *  #Amy Chung | zhongliguo@zhishan-iot.tk
- * @File-description:show how to use firmware library to
- *                   use timer_2 as a baudrate producer
+ * @File-description:show how to use firmware library to use timer_2 as a baud rate producer
  * @Required-compiler:SDCC
  * @Support-mcu:STC micro STC90 series
  * @Version:V0
@@ -11,16 +10,16 @@
 #include "conf.h"
   
 /*
- * @Protype:void sys_init(void)
+ * @Prototype:void sys_init(void)
  * @Parameter:None
  * @Ret-val:None
- * @Note:init MCU
+ * @Note:initial MCU
  */
 void sys_init(void)
 {
     UART_configTypeDef uc;
     
-    /* set baudrate as 9600bps */
+    /* set baud rate as 9600bps */
     uc.baudrate = 9600;
     uc.baudGenerator = PERIPH_TIM_2;
     uc.interruptState = ENABLE;

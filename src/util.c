@@ -1,10 +1,10 @@
 /*
  * @Author:
- *  #Weilun Fong | wlf(at)zhishan-iot.ga
- * @E-mail:mcu(at)zhishan-iot.ga
+ *  #Weilun Fong | wlf(at)zhishan-iot.tk
+ * @E-mail:mcu(at)zhishan-iot.tk
  * @File-description:provides some public functions
  * @Required-complier:SDCC
- * @Support-mcu:STC micro STC90 series
+ * @Support-mcu:STC micro STC90-RC/RD+ series
  * @Version:V0
  */
 

@@ -14,6 +14,9 @@
  Alias   :
  Date    :
  Note    :(1)rename license.txt as LICENSE; rename directory [sample] as [example]; rename directory [user] as [usr]
+          (2)refactor all code
+          (3)add new function GPIO_P45_cmd
+          (4)add bit operation function
  
 #TEAM
  Developer - Jiabin Hsu  (zsiothsu@zhishan-iot.tk)

@@ -1,11 +1,11 @@
 /*
  * @Author:
- *  #Jiabin Hsu  | zsiothsu(at)zhishan-iot.ga
- *  #Weilun Fong | wlf(at)zhishan-iot.ga
- * @E-mail:mcu(at)zhishan-iot.ga
+ *  #Jiabin Hsu  | zsiothsu(at)zhishan-iot.tk
+ *  #Weilun Fong | wlf(at)zhishan-iot.tk
+ * @E-mail:mcu(at)zhishan-iot.tk
  * @File-description:includes some macro definitions that used frequently
  * @Required-compiler:SDCC
- * @Support-mcu:STC micro STC90 series
+ * @Support-mcu:STC micro STC90-RC/RD+ series
  * @Version:V0
  */
 

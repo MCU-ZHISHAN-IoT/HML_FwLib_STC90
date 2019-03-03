@@ -4,7 +4,7 @@
  * @E-mail:mcu(at)zhishan-iot.tk
  * @File-description:includes some definitions of reset function
  * @Required-compiler:SDCC
- * @Support-mcu:STC micro STC90 series
+ * @Support-mcu:STC micro STC90-RC/RD+ series
  * @Version:V0
  */
 
@@ -12,7 +12,7 @@
 #define ___RST_H___
 
 /* ----- @header file ----- */
-#include <stc90.h>
+#include "stc90.h"
 #include "macro.h"
 
 /* ----- @enumeration type ----- */

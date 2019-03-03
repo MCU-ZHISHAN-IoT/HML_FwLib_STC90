@@ -5,7 +5,7 @@
  * @E-mail:mcu(at)zhishan-iot.tk
  * @File-description:includes some definitions for operating timer_2 module
  * @Required-compiler:SDCC
- * @Support-mcu:STC micro STC90 series
+ * @Support-mcu:STC micro STC90-RC/RD+ series
  * @Version:V0
  */
 
@@ -13,8 +13,8 @@
 #define ___TIM2_H___
 
 /* ----- @header file ----- */
-#include <stc90.h>
 #include <stdbool.h>
+#include "stc90.h"
 #include "exti.h"
 #include "macro.h"
 

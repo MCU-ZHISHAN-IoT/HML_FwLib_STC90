@@ -1,10 +1,10 @@
 /*
  * @Author:
- *  #Jiabin Hsu | zsiothsu(at)zhishan-iot.ga
- * @E-mail:mcu(at)zhishan-iot.ga
+ *  #Jiabin Hsu | zsiothsu(at)zhishan-iot.tk
+ * @E-mail:mcu(at)zhishan-iot.tk
  * @File-description:operations of ISP/IAP resource
  * @Required-compiler:SDCC
- * @Support-mcu:STC micro STC90 series
+ * @Support-mcu:STC micro STC90-RC/RD+ series
  * @Version:V0
  */
  
@@ -20,7 +20,7 @@
  */
 void ISP_cmd(Action a)
 {
-    ISP_CONTR = (ISP_CONTR & 0x7F) | a << 0x7;
+    ISP_CONTR = CONFB(ISP_CONTR,BIT_NUM_ISPEN,a);
 }
 
 /*
@@ -69,7 +69,7 @@ void ISP_idle(void)
  */
 unsigned char ISP_readByte(unsigned int addr)
 {
-    unsigned char dat;
+    unsigned char dat = 0x00;
     
     ISP_cmd(ENABLE);
     ISP_setAddress(addr);

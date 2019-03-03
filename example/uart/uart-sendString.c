@@ -1,20 +1,20 @@
 /*
  * @Author:
  *  #Amy Chung | zhongliguo@zhishan-iot.tk
- * @E-mail:mcu(at)zhishan-iot.ga
+ * @E-mail:mcu(at)zhishan-iot.tk
  * @File-description:a demo which shows how to use the library to send string via UART module
  * @Required-compiler:SDCC
  * @Support-mcu:STC micro STC90 series
  * @Version:V0
  */
-
+ 
 #include "conf.h"
 
 /*
- * @Protype:void sys_init(void)
+ * @Prototype:void sys_init(void)
  * @Parameter:None
  * @Ret-val:None
- * @Note:init MCU
+ * @Note:initial MCU
  */
 void sys_init(void)
 {

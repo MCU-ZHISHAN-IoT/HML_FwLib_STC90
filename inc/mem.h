@@ -6,7 +6,7 @@
  * #contains definitions that allow you to directly access the different memory areas of the STC90.
  * #have the similar functions like absacc.h in Keil
  * @Required-compiler:SDCC
- * @Support-mcu:STC micro STC90 series
+ * @Support-mcu:STC micro STC90-RC/RD+ series
  * @Version:V0
  */
 
@@ -14,7 +14,7 @@
 #define ___MEM_H___
 
 /* ----- @header file ----- */
-#include <stc90.h>
+#include "stc90.h"
 #include "macro.h"
 
 /* ----- @macro ----- */

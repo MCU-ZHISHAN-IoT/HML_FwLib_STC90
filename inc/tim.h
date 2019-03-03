@@ -1,11 +1,11 @@
 /*
  * @Author:
- *  #Jiabin Hsu  | zsiothsu(at)zhishan-iot.ga
- *  #Weilun Fong | wlf(at)zhishan-iot.ga
+ *  #Jiabin Hsu  | zsiothsu(at)zhishan-iot.tk
+ *  #Weilun Fong | wlf(at)zhishan-iot.tk
  * @E-mail:mcu(at)zhishan-iot.tk
  * @File-description:includes some definitions for operating timer module
  * @Required-compiler:SDCC
- * @Support-mcu:STC micro STC90 series
+ * @Support-mcu:STC micro STC90-RC/RD+ series
  * @Version:V0
  */
  
@@ -13,9 +13,8 @@
 #define ___TIM_H___
 
 /* ----- @header file ----- */
-#include <stc90.h>
 #include <stdbool.h>
-
+#include "stc90.h"
 #include "exti.h"
 #include "macro.h"
 

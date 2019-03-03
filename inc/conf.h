@@ -5,7 +5,7 @@
  * @E-mail:mcu(at)zhishan-iot.tk
  * @File-description:includes some header files and modules definitions
  * @Required-compiler:SDCC
- * @Support-mcu:STC micro STC90 series
+ * @Support-mcu:STC micro STC90-RC/RD+ series
  * @Version:V0
  */
  
@@ -13,8 +13,9 @@
 #define ___CONF_H___
 
 /* header files */
-#include  <stc90.h>
+#include "stc90.h"
 
+#include "bit.h"
 #include "exti.h"
 #include "gpio.h"
 #include "intrasm.h"

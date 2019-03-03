@@ -5,7 +5,7 @@
  * @E-mail:mcu(at)zhishan-iot.tk
  * @File-description:operations for EXTI resource
  * @Required-compiler:SDCC
- * @Support-mcu:STC micro STC90 series
+ * @Support-mcu:STC micro STC90-RC/RD+ series
  * @Version:V0
  */
 #include "exti.h"
@@ -76,31 +76,23 @@ void EXTI_setPriority(PERIPH_EXTI exti,INTR_priority p)
     {
         case PERIPH_EXTI_0:
         {
-            /* lower bit */
-            PX0 = (p & 0x01);
-            /* higher bit */
-            IPH = (IPH & 0xFE) | ((p >> 0x1) & 0x01);
+            PX0 = TESTB(p,0);
+            IPH = CONFB(IPH,BIT_NUM_PX0H,TESTB(p,1));
         } break;
         case PERIPH_EXTI_1:
         {
-            /* lower bit */
-            PX1 = (IP & 0xFB) | ((p & 0x01) << 0x2);
-            /* higher bit */
-            IPH = (IPH & 0xFB) | ((p & 0x02) << 0x1);
+            PX1 = TESTB(p,0);
+            IPH = CONFB(IPH,BIT_NUM_PX1H,TESTB(p,1));
         } break;
         case PERIPH_EXTI_2:
         {
-            /* lower bit */
-            PX2 = (p & 0x01);
-            /* higher bit */
-            IPH = (IPH & 0xBF) | ((p & 0x02)) << 0x6;
+            PX2 = TESTB(p,0);
+            IPH = CONFB(IPH,BIT_NUM_PX2H,TESTB(p,1));
         } break;
         case PERIPH_EXTI_3:
         {
-            /* lower bit */
-            PX3 = (p & 0x01);
-            /* higher bit */
-            IPH = (IPH & 0x7F) | ((p & 0x02)) << 0x7;
+            PX3 = TESTB(p,0);
+            IPH = CONFB(IPH,BIT_NUM_PX3H,TESTB(p,1));
         } break;
         default:break;
     }
