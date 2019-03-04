@@ -1,36 +1,38 @@
 /*
  * @Author:
  *  #Amy Chung | zhongliguo@zhishan-iot.tk
- * @File-description:show how to use firmware library to
- *                   make a tim interruption
- * @Required-compiler:SDCC
- * @Support-mcu:STC micro STC90 series
+ * @Compiler:SDCC v3.6.0
+ * @E-mail:mcu(at)zhishan-iot.tk
+ * @File-description:show how to use HML_FwLib_STC90 to make a timer interruption
+ * @Test-board:ZS5110
+ * @Test-mcu:STC90C53RC
  * @Version:V0
  */
 
 #include "conf.h"
  
 /*
- * @Protype:void sys_init(void)
+ * @Prototype:void sys_init(void)
  * @Parameter:None
  * @Ret-val:None
- * @Note:init MCU
+ * @Note:initial MCU
  */
 void sys_init(void)
 {
     TIM2_configTypeDef tc;
     
-    tc.function = TIM2_function_tim;
-    tc.interruptState = ENABLE;
-    tc.interruptPriority = ENABLE;
-    tc.mode = TIM2_mode_0;
-    tc.value = TIM2_calculateValue(50000);
+    tc.function          = TIM2_function_tim;
+    tc.interruptState    = ENABLE;
+    tc.interruptPriority = INTR_priority_0;
+    tc.mode              = TIM2_mode_0;
+    tc.value             = TIM2_calculateValue(50000);
     
     TIM2_config(&tc);
     TIM2_cmd(ENABLE);
     enableAllInterrupts();
 }
 
+/* ----- @main ----- */
 void main(void)
 {
     sys_init();
@@ -38,7 +40,7 @@ void main(void)
 }
 
 /*
- * @Protype:void TIM2_isr(void)
+ * @Prototype:void TIM2_isr(void)
  * @Parameter:None
  * @Ret-val:None
  * @Note:interrupt service function for TIM2
