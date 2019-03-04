@@ -1,10 +1,11 @@
 /*
  * @Author:
  *  #Amy Chung | zhongliguo@zhishan-iot.tk
- * @File-description:show how to use firmware library to
- *                   reset module
- * @Required-compiler:SDCC
- * @Support-mcu:STC micro STC90 series
+ * @Compiler:SDCC v3.6.0
+ * @E-mail:mcu(at)zhishan-iot.tk
+ * @File-description:show how to use firmware library to reset module
+ * @Test-board:ZS5110
+ * @Test-mcu:STC90C53RC
  * @Version:V0
  */
  
@@ -20,14 +21,15 @@ void sys_init(void)
 {
     EXTI_configTypeDef ec;
     
-    ec.mode = EXTI_mode_fallEdge;
-    ec.priority = DISABLE;
+    ec.mode     = EXTI_mode_fallEdge;
+    ec.priority = INTR_priority_0;
     EXTI_config(PERIPH_EXTI_1,&ec);
     EXTI_cmd(PERIPH_EXTI_1,ENABLE);
     enableAllInterrupts();
 }
 
-void main()
+/* ----- @main ----- */
+void main(void)
 {
     sys_init();
     while(true)

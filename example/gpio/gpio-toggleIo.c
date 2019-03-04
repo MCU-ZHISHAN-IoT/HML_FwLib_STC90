@@ -1,12 +1,11 @@
 /*
  * @Author:
  *  #Amy Chung | zhongliguo@zhishan-iot.tk
+ * @Compiler:SDCC v3.6.0
  * @E-mail:mcu(at)zhishan-iot.tk
- * @File-description:show how to use firmware library to control GPIO
- * @Required-complier:SDCC
- * @Support-mcu:STC micro STC90-RC/RD+ series
- * @Test-board:
- * @Test-mcu:
+ * @File-description:show how to use HML_FwLib_STC90 to control GPIO
+ * @Test-board:ZS5110
+ * @Test-mcu:STC90C53RC
  * @Version:V0
  */
  
