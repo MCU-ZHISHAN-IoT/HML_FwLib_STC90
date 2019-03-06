@@ -1,6 +1,6 @@
 /*
  * @Author:
- *  #Amy Chung | zhongliguo@zhishan-iot.tk
+ *  #Amy Chung | zhongliguo(at)zhishan-iot.tk
  * @Compiler:SDCC v3.6.0
  * @E-mail:mcu(at)zhishan-iot.tk
  * @File-description:show how to use HML_FwLib_STC90 to use timer-2 as a baud rate producer

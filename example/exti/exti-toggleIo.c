@@ -1,6 +1,6 @@
 /*
  * @Author:
- *  #Amy Chung | zhongliguo@zhishan-iot.tk
+ *  #Amy Chung | zhongliguo(at)zhishan-iot.tk
  * @Compiler:SDCC v3.6.0
  * @E-mail:mcu(at)zhishan-iot.tk
  * @File-description:a demo which shows how to use HML to toggle P1_0 state when EXTI trigged
