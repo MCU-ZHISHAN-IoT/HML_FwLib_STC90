@@ -10,9 +10,9 @@
  Date    :2018-06-05
  Note    :The first version of HML_FwLib_STC90!
 
->Version :
- Alias   :
- Date    :
+>Version :v0.0.1
+ Alias   :V0R1
+ Date    :2019-03-12
  Note    :(1)rename license.txt as LICENSE; rename directory [sample] as [example]; rename directory [user] as [usr]
           (2)refactor all code
           (3)add new function GPIO_P45_cmd

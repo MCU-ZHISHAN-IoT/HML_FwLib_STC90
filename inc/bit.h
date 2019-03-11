@@ -5,7 +5,7 @@
  * @File-description:bit operation
  * @Required-compiler:SDCC
  * @Support-mcu:general purpose header file
- * @Version:V1
+ * @Version:V0
  */
  
 #ifndef ___BIT_H___
