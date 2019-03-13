@@ -12,7 +12,7 @@
 #define ___WDT_H___
 
 /* ----- @header file ----- */
-#include <stc90.h>
+#include "stc90.h"
 #include "macro.h"
 
 /* ----- @enumeration type ----- */
