@@ -15,10 +15,24 @@ Please visit [detail page](https://hw.zhishan-iot.tk/page/hml/detail/fwlib_stc90
 + Open all source code on [Github](https://github.com) and licensed under the [WTPL2](http://wtfpl2.com/).
 + Readable code and provide examples to help you get started it.
 
+# What's working
+Here is a list of the all on-chip peripheral drivers and examples that need to be ported.
+
+| Peripheral | Description | Status |
+| --- | --- | --- |
+| extended bus | Intel 8080 bus receiver/transmitter | supported |
+| EXTI | extern interrupt | supported |
+| GPIO | I/O peripheral | supported  |
+| ISP | internal EEPROM | supported  |
+| RST | reset control | supported |
+| TIM | timer | supported |
+| UART | universal asynchronous receiver/transmitter | supported |
+| WDT | watchdog | supported |
+
 ## Prerequisite
 + [GNU Make](http://www.gnu.org/software/make/manual/make.html)(recommend)
 + [SDCC compiler](http://sdcc.sourceforge.net/)
-+ *\[for Windows\]* Unix shell tools([msys](http://www.mingw.org/wiki/MSYS), [Cygwin](http://www.cygwin.com/), [GNUwin32](http://gnuwin32.sourceforge.net/)) needed by makefile for SDCC
++ *\[for Windows\]* Unix shell tools([msys](http://www.mingw.org/wiki/MSYS), [Cygwin](http://www.cygwin.com/), [GNUwin32](http://gnuwin32.sourceforge.net/)) needed by makefile for HML_FwLib_STC90
 
 ## Usage
 ### file structure
@@ -40,7 +54,7 @@ The macro mark the model of target MCU and is defined in *macro.h*. The default 
 #### conditional compilation
 In order to ensure the projects based on HML_FwLib_STC90 can be downloaded into the limited on-chip flash space of STC90 MCUs, the developers can modify the macro definition named `___COMPILE_XXX___` in *macro.h* to specify which piece of code should be compiled, thus to reduce the size of the HEX file. If user only use GPIO module, then user just need to enable `___COMPILE_GPIO___` macro definition in macro.h. Some macros for conditional compilation rely on others. For example, before you define the macro definition `___COMPILE_UART___`, the macro `___COMPILE_EXTI___`, `___COMPILE_TIM___` and `___COMPILE_TIM2___` should be defined, otherwise the compilation would be failed.
 ### code & compilation
-There is a source file named *test.c* under *usr* directory, we have put a main function here. User can add and modify own code here, then enter <kbd>make</kbd> in terminal, the Makefile will work and complete compilation. From version V0R3, you can enter <kbd>make help</kbd> to get all usages, and former version makefile only support <kbd>make</kbd>, <kbd>make clean</kbd>, <kbd>make mostlyclean</kbd>(change into <kbd>make distclean</kbd> now)
+There is a source file named *test.c* under *usr* directory, we have put a main function here. User can add and modify own code here, then enter <kbd>make</kbd> in terminal, the Makefile will work and complete compilation. From version V0R2, you can enter <kbd>make help</kbd> to get all usages, and former version makefile only support <kbd>make</kbd>, <kbd>make clean</kbd>, <kbd>make mostlyclean</kbd>(change into <kbd>make distclean</kbd> now)
 
 Certainly, you can just add *inc* and *src* directory into your project structure, and write your own makefile to build a custom project. 
 
