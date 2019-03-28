@@ -1,11 +1,11 @@
 /*
  * @Author:
- *  #Amy Chung | zhongliguo(at)zhishan-iot.tk
+ *  #Weilun Fong | wlf(at)zhishan-iot.tk
  * @Compiler:SDCC v3.6.0
  * @E-mail:mcu(at)zhishan-iot.tk
  * @File-description:show how to use HML_FwLib_STC90 to use ISP to write and read byte
- * @Test-board:ZS5110
- * @Test-mcu:STC90C53RC
+ * @Test-board:TS51-V2.0
+ * @Test-mcu:STC90C52RC
  * @Version:V0
  */
 
