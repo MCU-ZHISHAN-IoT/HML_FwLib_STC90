@@ -17,9 +17,9 @@
           (3)add new function GPIO_P45_cmd
           (4)add bit operation function
           
->Version :
+>Version :v0.1.0
  Alias   :
- Date    :
+ Date    :2019-08-03
  Note    :(1)add AUTHORS, rename log.txt as ChangeLog
           (2)fix bug of macro CONFB in bit.h
           (3)update Makefile to v0.2.4
