@@ -1,46 +1,58 @@
-/*
- * @Author:
- *  #Jiabin Hsu  | zsiothsu(at)zhishan-iot.tk
- *  #Weilun Fong | wlf(at)zhishan-iot.tk
- * @E-mail:mcu(at)zhishan-iot.tk
- * @File-description:operations for UART resource
- * @Required-compiler:SDCC
- * @Support-mcu:STC micro STC90-RC/RD+ series
- * @Version:V0
- */
+/*****************************************************************************/
+/** 
+ * \file        uart.c
+ * \author      Jiabin Hsu  | zsiothsu@zhishan-iot.tk
+ * \author      Weilun Fong | wlf@zhishan-iot.tk
+ * \brief       operations for UART
+ * \note        
+ * \version     v0.2
+ * \ingroup     UART
+******************************************************************************/
 
 #include "uart.h"
 
-#ifdef ___COMPILE_UART___
+#ifdef __CONF_COMPILE_UART
 
-/*
- * @Prototype:void UART_cmd_multiBaudrate(Action a)
- * @Parameter:(1)a:expected action
- * @Ret-val:
- * @Note:disable or enable multi baud rate mode
- */
+/*****************************************************************************/
+/** 
+ * \author      Weilun Fong
+ * \date        
+ * \brief       enable or disable multi-baudrate mode
+ * \param[in]   a: expected state
+ * \return      none
+ * \ingroup     UART
+ * \remarks     
+******************************************************************************/
 void UART_cmd_multiBaudrate(Action a)
 {
     CONFB(PCON,BIT_NUM_SMOD,a);
 }
 
-/*
- * @Prototype:void UART_cmd_receive(Action a)
- * @Parameter:(1)a:expected action
- * @Ret-val:
- * @Note:disable or enable receive function of UART module
- */
+/*****************************************************************************/
+/** 
+ * \author      Weilun Fong
+ * \date        
+ * \brief       enable or disable receive function
+ * \param[in]   a: expected state
+ * \return      none
+ * \ingroup     UART
+ * \remarks     
+******************************************************************************/
 void UART_cmd_receive(Action a)
 {
     REN = a;
 }
 
-/*
- * @Prototype:void UART_config(UART_configTypeDef *uc,PERIPH_TIM tim)
- * @Parameter:(1)uc:the pointer of configure struct (2)tim:target timer module
- * @Ret-val:
- * @Note:configure UART module
- */
+/*****************************************************************************/
+/** 
+ * \author      Jiabin Hsu
+ * \date        
+ * \brief       configure UART module
+ * \param[in]   uc: the pointer of configuration struct
+ * \return      none
+ * \ingroup     UART
+ * \remarks     
+******************************************************************************/
 void UART_config(UART_configTypeDef *uc)
 {
     TIM_configTypeDef tc;
@@ -51,7 +63,7 @@ void UART_config(UART_configTypeDef *uc)
     UART_cmd_multiBaudrate(uc->multiBaudrate);
     UART_setMode(uc->mode);
     UART_cmd_receive(uc->receiveState);
-    UART_switchTim(uc->baudGenerator);
+    UART_setBaudrateGenerator(uc->baudGenerator);
 
     switch(uc->baudGenerator)
     {
@@ -77,20 +89,27 @@ void UART_config(UART_configTypeDef *uc)
             TIM2_config(&tc2);
             TIM2_cmd(ENABLE);
         } break;  
-        default:break;
+        default: break;
     }
 }
 
-/*
- * @Prototype:unsigned int UART_getBaudGeneratorInitValue(uint32_t baud,PERIPH_TIM tim)
- * @Parameter:(1)baud:expected baud rate (2)tim:target timer module
- * @Ret-val:initial value the baud rate required of timer counter register(if return 0x0000,it means overflow)
- * @Note:calculate timer counter register value
- */
+
+/*****************************************************************************/
+/** 
+ * \author      Weilun Fong
+ * \date        
+ * \brief       calculate initial value of counter inside timer
+ * \param[in]   baud: expected baud rate
+ * \param[in]   tim : expected baudrate generator
+ * \return      initial value of baudrate generator's counter register(if the 
+ *              function returns 0x0000, it means overflow)
+ * \ingroup     UART
+ * \remarks     
+******************************************************************************/
 unsigned int UART_getBaudGeneratorInitValue(uint32_t baud,PERIPH_TIM tim)
 {
     unsigned char tmp = 0x00;
-    
+
     /* baud = (2^SMOD/32) * _FRE_OSC_/(256-x)*12 */
     switch(tim)
     {
@@ -98,66 +117,78 @@ unsigned int UART_getBaudGeneratorInitValue(uint32_t baud,PERIPH_TIM tim)
         {
             if(PCON & 0x80)     /* multi baud rate mode */
             {
-                if(baud > _FRE_OSC_/12/16)
+                if(baud > MCU_FRE_CLK/12/16)
                 {
                     /* baud rate over max value */
                     return 0x0000;
                 }
                 else 
                 {
-                    tmp = (256 - _FRE_OSC_/16/12/baud);  
+                    tmp = (256 - MCU_FRE_CLK/16/12/baud);  
                 }
             }
             else
             {
-                if(baud > _FRE_OSC_/12/32)
+                if(baud > MCU_FRE_CLK/12/32)
                 {
                     return 0x0000;
                 }
                 else
                 {
-                    tmp = (256 - _FRE_OSC_/32/12/baud);
+                    tmp = (256 - MCU_FRE_CLK/32/12/baud);
                 }
             }
         } break;
         case PERIPH_TIM_2:
         {
-            return ((65536 - (_FRE_OSC_/32/baud)));
+            return ((65536 - (MCU_FRE_CLK/32/baud)));
         } break;
-        default:break;
+        default: break;
     }
     
     return (tmp << 0x8) | tmp;
 }
 
-/*
- * @Prototype:FunctionalState UART_isReceived(void)
- * @Parameter:
- * @Ret-val:(1)SET:data have been received;(2)RESET:data haven't been received
- * @Note:
- */
+/*****************************************************************************/
+/** 
+ * \author      Weilun Fong
+ * \date        
+ * \brief       check if UART module has received one byte of data or not
+ * \param[in]   
+ * \return      value of bit TI
+ * \ingroup     UART
+ * \remarks     
+******************************************************************************/
 FunctionalState UART_isReceived(void)
 {
     return (FunctionalState)RI;
 }
 
-/*
- * @Prototype:FunctionalState UART_isTransmitted(void)
- * @Parameter:
- * @Ret-val:(1)SET:data have been transmitted;(2)RESET:data haven't been transmitted
- * @Note:
- */
+/*****************************************************************************/
+/** 
+ * \author      Weilun Fong
+ * \date        
+ * \brief       check if UART module has transmitted one byte of data or not
+ * \param[in]   
+ * \return      value of bit RI
+ * \ingroup     UART
+ * \remarks     
+******************************************************************************/
 FunctionalState UART_isTransmitted(void)
 {
     return (FunctionalState)TI;
 }
 
-/*
- * @Prototype:void UART_sendByte(byte dat)
- * @Parameter:(1)dat:one byte of data user want to send
- * @Ret-val:
- * @Note:send a byte via UART module
- */
+/*****************************************************************************/
+/** 
+ * \author      Weilun Fong
+ * \date        
+ * \brief       send one byte of data via UART
+ * \param[in]   dat: expected byte data
+ * \return      none
+ * \ingroup     UART
+ * \remarks     
+******************************************************************************/
 void UART_sendByte(byte dat)
 {
     SBUF = dat;
@@ -165,12 +196,16 @@ void UART_sendByte(byte dat)
     TI = RESET;
 }
 
-/*
- * @Prototype:void UART_sendString(char *str)
- * @Parameter:(1)str:the point of string user want to send
- * @Ret-val:
- * @Note:send a ASCII string via UART module
- */
+/*****************************************************************************/
+/** 
+ * \author      Weilun Fong
+ * \date        
+ * \brief       send string via UART
+ * \param[in]   str: pointer to target string
+ * \return      none
+ * \ingroup     UART
+ * \remarks     the string must be end with '\0'
+******************************************************************************/
 void UART_sendString(char *str)
 {
     while(*str != '\0')
@@ -182,53 +217,67 @@ void UART_sendString(char *str)
     }
 }
 
-/*
- * @Prototype:void UART_setMode(UART_mode m)
- * @Parameter:(1)m:expected work mode
- * @Ret-val:
- * @Note:set work mode of UART module
- */
+/*****************************************************************************/
+/** 
+ * \author      Weilun Fong
+ * \date        2019/08/25
+ * \brief       select a timer as baudrate generator
+ * \param[in]   tim: target timer
+ * \return      none
+ * \ingroup     UART
+ * \remarks     parameter tim must be PERIPH_TIM_1 or PERIPH_TIM_2
+******************************************************************************/
+void UART_setBaudrateGenerator(PERIPH_TIM tim)
+{
+    switch(tim)
+    {
+        case PERIPH_TIM_1: T2CON = T2CON & 0xCF; break;
+        case PERIPH_TIM_2: T2CON = (T2CON & 0xCF) | 0x30; break;
+        default: break;
+    }
+}
+
+/*****************************************************************************/
+/** 
+ * \author      Weilun Fong
+ * \date        
+ * \brief       set work mode of UART module
+ * \param[in]   m: expected work mode
+ * \return      none
+ * \ingroup     UART
+ * \remarks     
+******************************************************************************/
 void UART_setMode(UART_mode m)
 {
     SCON = (SCON & 0x3F) | ((unsigned char)m << 0x6);
 }
 
-/*
- *@Prototype:void UART_switchTim(PERIPH_TIM tim)
- *@Parameter:(1)tim:target timer module
- *@Ret-val:
- *@Note:choose a timer to be baud rate generator
- */
-void UART_switchTim(PERIPH_TIM tim)
-{
-    if(tim == PERIPH_TIM_1)
-    {
-        T2CON = T2CON & 0xCF;
-    }
-    else if(tim == PERIPH_TIM_2)
-    {
-        T2CON = (T2CON & 0xCF) | 0x30;
-    }
-}
-
-/*
- * @Prototype:void UART_INT_cmd(Action a)
- * @Parameter:(1)a:expected action
- * @Ret-val:
- * @Note:disable or enable interrupt function of UART module
- */
+/*****************************************************************************/
+/** 
+ * \author      Weilun Fong
+ * \date        
+ * \brief       enable or disable interrupt of UART
+ * \param[in]   a: expected state
+ * \return      none
+ * \ingroup     UART
+ * \remarks     
+******************************************************************************/
 void UART_INT_cmd(Action a)
 {
     ES = a;
 }
 
-/*
- * @Prototype:void UART_INT_setPriority(INTR_priority p)
- * @Parameter:(1)p:expected interrupt priority class
- * @Ret-val:
- * @Note:set priority of UART module
- */
-void UART_INT_setPriority(INTR_priority p)
+/*****************************************************************************/
+/** 
+ * \author      Weilun Fong
+ * \date        
+ * \brief       configure interrupt priority class of UART
+ * \param[in]   p: expected interrupt priority class
+ * \return      none
+ * \ingroup     UART
+ * \remarks     
+******************************************************************************/
+void UART_INT_setPriority(UTIL_interruptPriority p)
 {
     PS  = TESTB(p,0);
     CONFB(IPH,BIT_NUM_PSH,TESTB(p,1));

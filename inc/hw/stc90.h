@@ -1,13 +1,14 @@
-/*
- * @Author:
- *  #Jiabin Hsu  | zsiothsu(at)zhishan-iot.tk
- *  #Weilun Fong | wlf(at)zhishan-iot.tk
- * @E-mail:mcu(at)zhishan-iot.tk
- * @File-description:STC90Cxx header file
- * @Required-compiler:SDCC
- * @Support-mcu:STC micro STC90-RC/RD+ series
- * @Version:V0
- */
+/*****************************************************************************/
+/** 
+ * \file        stc90.h
+ * \author      Jiabin Hsu  | zsiothsu@zhishan-iot.tk
+ * \author      Weilun Fong | wlf@zhishan-iot.tk
+ * \brief       register define header file for STC90 series MCU
+ * \note        
+ * \version     
+ * \ingroup     generic
+******************************************************************************/
+
 #ifndef ___STC90_H___
 #define ___STC90_H___
 

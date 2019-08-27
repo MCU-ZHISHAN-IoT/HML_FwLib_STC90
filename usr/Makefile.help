@@ -1,13 +1,13 @@
 ##################################################
-# Author     :Weilun Fong | wlf(at)zhishan-iot.tk
-# Date       :2019-07-29
-# Description:help Makefile for HML_FwLib_xxx
-# E-mail     :mcu(at)zhishan-iot.tk
-# Make-tool  :GNU Make (http://www.gnu.org/software/make/manual/make.html)
+# Author     : Weilun Fong | wlf@zhishan-iot.tk
+# Date       : 2019-08-25
+# Description: help Makefile
+# E-mail     : mcu@zhishan-iot.tk
+# Make-tool  : GNU Make (http://www.gnu.org/software/make/manual/make.html)
 # Page       :
 # Tar-mcu    :
-# Tar-project:HML_FwLib_xxx
-# Version    :v0.2.4
+# Tar-project: general purpose
+# Version    : v0.2.5
 ##################################################
 
 ########################################
@@ -23,7 +23,7 @@ EECHO ?= $(ECHO) -e
 help:
 	@$(ECHO)  "Build:"
 	@$(ECHO)  "    all        - Build target(include HML library file and user code)"
-	@$(EECHO) "    rebuild    - Rebuild target(include HML library file and user code. In this case, -j can't work and please pass \033[3mJOBS\033[0m variable via command line instead of it, such as \"make rebuild JOBS=8\""
+	@$(EECHO) "    rebuild    - Rebuild target(include HML library file and user code). In this case, -j can't work and please pass \033[3mJOBS\033[0m variable via command line instead of it, such as \"make rebuild JOBS=8\""
 	@$(ECHO)  ""
 	@$(ECHO)  "Cleaning:"
 	@$(ECHO)  "    clean      - Delete temporary files created by build, except for the .lib and .hex files"
@@ -36,4 +36,3 @@ help:
 	@$(ECHO)  "+ command line variable:"
 	@$(ECHO)  "    JOBS       - Specify number of make job(only for make rebuild)"
 	@$(ECHO)  "    MYFILE     - Specify user source file or Makefile will fill it with \"test.c\". It's noticed that once use this option to compile specified .c file, user should add this option during doing other works, such as clean and rebuild."
-

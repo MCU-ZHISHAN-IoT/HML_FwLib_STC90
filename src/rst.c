@@ -1,23 +1,28 @@
-/*
- * @Author:
- *  #Jiabin Hsu | zsiothsu(at)zhishan-iot.tk
- * @E-mail:mcu(at)zhishan-iot.tk
- * @File-description:operations of reset resource
- * @Required-compiler:SDCC
- * @Support-mcu:STC micro STC90-RC/RD+ series
- * @Version:V0
- */
+/*****************************************************************************/
+/** 
+ * \file        rst.c
+ * \author      Jiabin Hsu | zsiothsu@zhishan-iot.tk
+ * \brief       operations for reset module
+ * \note        
+ * \version     v0.2
+ * \ingroup     RST
+******************************************************************************/
+
 
 #include "rst.h"
  
-#ifdef ___COMPILE_RST___
+#ifdef __CONF_COMPILE_RST
 
-/*
- * @Prototype:void RST_reset(RST_bootarea area)
- * @Parameter:(1)area:boot area
- * @Ret-val:
- * @Note:resets module and chooses area the module boots from
- */
+/*****************************************************************************/
+/** 
+ * \author      Jiabin Hsu
+ * \date        
+ * \brief       software reset
+ * \param[in]   area: the are you want to boot from
+ * \return      none
+ * \ingroup     RST
+ * \remarks     
+******************************************************************************/
 void RST_reset(RST_bootarea area)
 {
     SET_BIT_MASK(ISP_CONTR,ISPEN);

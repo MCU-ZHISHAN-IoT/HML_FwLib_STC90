@@ -1,13 +1,13 @@
 /*****************************************************************************/
 /** 
- * \file       test.c
- * \author     Weilun Fong | wlf@zhishan-iot.tk
+ * \file       wdt_feedDog.c
+ * \author     Amy Chung | zhongliguo(at)zhishan-iot.tk
  * \date       
- * \brief      a demo file
+ * \brief      a demo for on-chip watchdog
  * \note       
  * \version    v0.2
- * \ingroup    generic
- * \remarks    test-board: TS51-V2.0; test-MCU: STC89C52RC
+ * \ingroup    example
+ * \remarks    test-board: ZS5110; test-MCU: STC90C53RC
 ******************************************************************************/
 
 /*****************************************************************************
@@ -17,7 +17,7 @@
 
 /*****************************************************************************/
 /** 
- * \author      Weilun Fong
+ * \author      Amy Chung
  * \date        
  * \brief       initial MCU
  * \param[in]   
@@ -28,22 +28,22 @@
 void sys_init(void)
 {
     UART_configTypeDef uc;
-    
+
     uc.baudrate          = 9600;
-    uc.baudGenerator     = PERIPH_TIM_2;
+    uc.baudGenerator     = PERIPH_TIM_1;
     uc.interruptState    = ENABLE;
     uc.interruptPriority = UTIL_interruptPriority_0;
     uc.mode              = UART_mode_1;
     uc.multiBaudrate     = DISABLE;
     uc.receiveState      = ENABLE;
-    
+
     UART_config(&uc);
     enableAllInterrupts();
 }
 
 /*****************************************************************************/
 /** 
- * \author      Weilun Fong
+ * \author      Amy Chung
  * \date        
  * \brief       main function
  * \param[in]   
@@ -54,10 +54,15 @@ void sys_init(void)
 void main(void)
 {
     sys_init();
+    UART_sendString("MCU boot");
+    WDT_setPrescale(WDT_prescale_32);
+    WDT_cmd(ENABLE);
+
     while(true)
     {
-        /* send per 500ms */
+        /*feed watchdog per 500ms*/
         sleep(500);
-        UART_sendString("Hello,world\r\n");
+        WDT_feed();
+        UART_sendString("root@localboard:Watch dog has been fed\r\n");
     }
 }

@@ -1,21 +1,39 @@
-/*
- * @Author:
- *  #Weilun Fong | wlf(at)zhishan-iot.tk
- * @E-mail:mcu(at)zhishan-iot.tk
- * @File-description:includes some public functions
- * @Required-compiler:SDCC
- * @Support-mcu:STC micro STC90-RC/RD+ series
- * @Version:V0
- */
+/*****************************************************************************/
+/** 
+ * \file        util.h
+ * \author      Weilun Fong | wlf@zhishan-iot.tk
+ * \brief       public operations
+ * \note        
+ * \version     v0.2
+ * \ingroup     UTIL
+******************************************************************************/
 
 #ifndef ___UTIL_H___
 #define ___UTIL_H___
 
-/* ----- @header file ----- */
-#include "stc90.h"
+/*****************************************************************************
+ *                             header file                                   *
+ *****************************************************************************/
+#include "hw/stc90.h"
 #include "macro.h"
 
-/* ----- @function ----- */
+/*****************************************************************************
+ *                           enumeration type                                *
+ *****************************************************************************/
+/**
+ *\brief: mark interrupt priority, lager number means higher priority
+ */
+typedef enum
+{
+    UTIL_interruptPriority_0 = 0x00,
+    UTIL_interruptPriority_1 = 0x01,
+    UTIL_interruptPriority_2 = 0x02,
+    UTIL_interruptPriority_3 = 0x03,
+} UTIL_interruptPriority;
+
+/*****************************************************************************
+ *                          function declare                                 *
+ *****************************************************************************/
 void disableAllInterrupts(void);
 void enableAllInterrupts(void);
 void sleep(unsigned int t);

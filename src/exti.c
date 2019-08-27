@@ -1,37 +1,48 @@
-/*
- * @Author:
- *  #Jiabin Hsu  | zsiothsu(at)zhishan-iot.tk
- *  #Weilun Fong | wlf(at)zhishan-iot.tk
- * @E-mail:mcu(at)zhishan-iot.tk
- * @File-description:operations for EXTI resource
- * @Required-compiler:SDCC
- * @Support-mcu:STC micro STC90-RC/RD+ series
- * @Version:V0
- */
-#include "exti.h"
- 
-#ifdef ___COMPILE_EXTI___ 
+/*****************************************************************************/
+/** 
+ * \file        exti.c
+ * \author      Jiabin Hsu  | zsiothsu(at)zhishan-iot.tk
+ * \author      Weilun Fong | wlf@zhishan-iot.tk
+ * \brief       operation for on-chip EXTI module
+ * \note        
+ * \version     v0.2
+ * \ingroup     EXTI
+******************************************************************************/
 
-/*
- * @Prototype:void EXTI_config(PERIPH_EXTI exti,EXTI_configTypeDef ec)
- * @Parameter:
- *  (1)exti:target EXTI module
- *  (2)ec:the pointer of configure struct which includes all configuration information
- * @Note:configure EXTI module
- */
+#include "exti.h"
+
+#ifdef __CONF_COMPILE_EXTI 
+
+/*****************************************************************************/
+/** 
+ * \author      Weilun Fong
+ * \date        
+ * \brief       configure function for EXTI module
+ * \param[in]   exti: target EXTI module
+ * \param[in]   ec  : the pointer of configuration structure which includes all
+ *                    configuration information
+ * \return      
+ * \ingroup     EXTI
+ * \remarks     
+******************************************************************************/
 void EXTI_config(PERIPH_EXTI exti,EXTI_configTypeDef *ec)
 {
     EXTI_setMode(exti,ec->mode);
     EXTI_setPriority(exti,ec->priority);
 }
 
-/*
- * @Prototype:void EXTI_cmd(PERIPH_EXTI exti,Action a)
- * @Parameter:
- *  (1)exti:target EXTI module
- *  (2)a:expected status
- * @Note:enable or disable EXTI module
- */
+
+/*****************************************************************************/
+/** 
+ * \author      Weilun Fong
+ * \date        
+ * \brief       disable or enable target EXTI module
+ * \param[in]   exti: target EXTI module
+ * \param[in]   a   : expected status
+ * \return      
+ * \ingroup     EXTI
+ * \remarks     
+******************************************************************************/
 void EXTI_cmd(PERIPH_EXTI exti,Action a)
 {
     switch(exti)
@@ -44,13 +55,17 @@ void EXTI_cmd(PERIPH_EXTI exti,Action a)
     }
 }
 
-/*
- * @Prototype:void EXTI_setMode(PERIPH_EXTI exti,EXTI_mode mod)
- * @Parameter:
- *  (1)exti:target EXTI module
- *  (2)mod:expected work mode
- * @Note:set work mode EXTI module
- */
+/*****************************************************************************/
+/** 
+ * \author      Weilun Fong
+ * \date        
+ * \brief       configure work mode of target EXTI module
+ * \param[in]   exti: target EXTI module
+ * \param[in]   mod : expected work mode
+ * \return      
+ * \ingroup     EXTI
+ * \remarks     
+******************************************************************************/
 void EXTI_setMode(PERIPH_EXTI exti,EXTI_mode mod)
 {
     switch(exti)
@@ -63,14 +78,18 @@ void EXTI_setMode(PERIPH_EXTI exti,EXTI_mode mod)
     }
 }
 
-/*
- * @Prototype:void EXTI_setPriority(PERIPH_EXTI exti,INTR_priority p)
- * @Parameter:
- *  (1)exti:target EXTI module
- *  (2)p:expected interrupt priority class
- * @Note:set priority of EXTI module
- */
-void EXTI_setPriority(PERIPH_EXTI exti,INTR_priority p)
+/*****************************************************************************/
+/** 
+ * \author      Weilun Fong
+ * \date        2019/08/18
+ * \brief       configure priority class of target EXTI module
+ * \param[in]   exti: target EXTI module
+ * \param[in]   p   : target interrupt priority class
+ * \return      
+ * \ingroup     EXTI
+ * \remarks     
+******************************************************************************/
+void EXTI_setPriority(PERIPH_EXTI exti,UTIL_interruptPriority p)
 {
     switch(exti)
     {

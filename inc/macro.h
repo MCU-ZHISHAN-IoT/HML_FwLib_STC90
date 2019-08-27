@@ -1,102 +1,198 @@
-/*
- * @Author:
- *  #Jiabin Hsu  | zsiothsu(at)zhishan-iot.tk
- *  #Weilun Fong | wlf(at)zhishan-iot.tk
- * @E-mail:mcu(at)zhishan-iot.tk
- * @File-description:includes some macro definitions that used frequently
- * @Required-compiler:SDCC
- * @Support-mcu:STC micro STC90-RC/RD+ series
- * @Version:V0
- */
+/*****************************************************************************/
+/** 
+ * \file        macro.h
+ * \author      Weilun Fong | wlf@zhishan-iot.tk
+ * \brief       HML macro define
+ * \note        
+ * \version     v0.2
+ * \ingroup     generic
+******************************************************************************/
 
 #ifndef ___MACRO_H___
 #define ___MACRO_H___
 
-/* ----- @type define ----- */
+/*****************************************************************************
+ *                             header file                                   *
+ *****************************************************************************/
+#include "conf.h"
+
+/*****************************************************************************
+ *                             type define                                   *
+ *****************************************************************************/
 typedef unsigned char byte;
 typedef unsigned char u8;
 typedef unsigned int  u16;
 typedef unsigned int  word;
 
-/* ----- @enumeration type ----- */
-/* mark user action */
+/*****************************************************************************
+ *                           enumeration type                                *
+ *****************************************************************************/
+
+/**
+ *\brief: mark user action
+ */
 typedef enum
 {
     DISABLE = 0x0,
     ENABLE  = !DISABLE
 } Action;
 
-/* mark bit level */
+/**
+ *\brief: mark bit value/state
+ */
 typedef enum
 {
     RESET = 0x0,
     SET   = !RESET
 } FunctionalState;
 
-/* mark model */
-#define _MCU_NULL_          0
-#define _MCU_STC90C51RC_    1
-#define _MCU_STC90LE51RC_   1
-#define _MCU_STC90C52RC_    2
-#define _MCU_STC90LE52RC_   2
-#define _MCU_STC90C12RC_    3
-#define _MCU_STC90LE12RC_   3
-#define _MCU_STC90C54RD_    4
-#define _MCU_STC90LE54RD_   4
-#define _MCU_STC90C58RD_    5
-#define _MCU_STC90LE58RD_   5
-#define _MCU_STC90C510RD_   6
-#define _MCU_STC90LE510RD_  6
-#define _MCU_STC90C512RD_   7
-#define _MCU_STC90LE512RD_  7
-#define _MCU_STC90C514RD_   8
-#define _MCU_STC90LE514RD_  8
-//TODO: STC90 AD series
+/*****************************************************************************
+ *                                macro                                      *
+ *****************************************************************************/
 
-/* ---------- NEED TO CONFIG MANUALLY !!! ---------- */
-#define _MCU_MODEL_ _MCU_STC90C52RC_
+/**
+ *\brief: mark MCU model of STC90 series(suffix letter 'P' represents '+' )
+ *        keep the same order with datasheet
+ */
+#define MCU_MODEL_GENERIC         0x01
+#define MCU_MODEL_STC90C51        0x02
+#define MCU_MODEL_STC90LE51       0x03
+#define MCU_MODEL_STC90C52        0x03
+#define MCU_MODEL_STC90LE52       0x04
+#define MCU_MODEL_STC90C51RC      0x05
+#define MCU_MODEL_STC90LE51RC     0x06
+#define MCU_MODEL_STC90C52RC      0x07
+#define MCU_MODEL_STC90LE52RC     0x08
+#define MCU_MODEL_STC90C53RC      0x09
+#define MCU_MODEL_STC90LE53RC     0x0A
+#define MCU_MODEL_STC90C12RC      0x0B
+#define MCU_MODEL_STC90LE12RC     0x0C
+#define MCU_MODEL_STC90C54RDP     0x0D
+#define MCU_MODEL_STC90LE54RDP    0x0E
+#define MCU_MODEL_STC90C58RDP     0x0F
+#define MCU_MODEL_STC90LE58RDP    0x10
+#define MCU_MODEL_STC90C510RDP    0x11
+#define MCU_MODEL_STC90LE510RDP   0x12
+#define MCU_MODEL_STC90C512RDP    0x13
+#define MCU_MODEL_STC90LE512RDP   0x14
+#define MCU_MODEL_STC90C514RDP    0x15
+#define MCU_MODEL_STC90LE514RDP   0x16
+#define MCU_MODEL_STC90C516RDP    0x17
+#define MCU_MODEL_STC90LE516RDP   0x18
 
-/* configure clock frequency */
-#define _FRE_OSC_ 11059200L
-//#define _FRE_OSC_ 12000000L
+/**
+ *\brief: check macro for MCU model
+ */
+#define IS_STC90_MCU_MODEL(model)                \
+    (                                            \
+        (model == MCU_MODEL_GENERIC)       ||    \
+        (model == MCU_MODEL_STC90C51)      ||    \
+        (model == MCU_MODEL_STC90LE51)     ||    \
+        (model == MCU_MODEL_STC90C52)      ||    \
+        (model == MCU_MODEL_STC90LE52)     ||    \
+        (model == MCU_MODEL_STC90C51RC)    ||    \
+        (model == MCU_MODEL_STC90LE51RC)   ||    \
+        (model == MCU_MODEL_STC90C52RC)    ||    \
+        (model == MCU_MODEL_STC90LE52RC)   ||    \
+        (model == MCU_MODEL_STC90C53RC)    ||    \
+        (model == MCU_MODEL_STC90LE53RC)   ||    \
+        (model == MCU_MODEL_STC90C12RC)    ||    \
+        (model == MCU_MODEL_STC90LE12RC)   ||    \
+        (model == MCU_MODEL_STC90C54RDP)   ||    \
+        (model == MCU_MODEL_STC90LE54RDP)  ||    \
+        (model == MCU_MODEL_STC90C58RDP)   ||    \
+        (model == MCU_MODEL_STC90LE58RDP)  ||    \
+        (model == MCU_MODEL_STC90C510RDP)  ||    \
+        (model == MCU_MODEL_STC90LE510RDP) ||    \
+        (model == MCU_MODEL_STC90C512RDP)  ||    \
+        (model == MCU_MODEL_STC90LE512RDP) ||    \
+        (model == MCU_MODEL_STC90C514RDP)  ||    \
+        (model == MCU_MODEL_STC90LE514RDP) ||    \
+        (model == MCU_MODEL_STC90C516RDP)  ||    \
+        (model == MCU_MODEL_STC90LE516RDP)       \
+    )
 
-/* select the part you need */
-#define ___COMPILE_EXTI___
-#define ___COMPILE_GPIO___
-#define ___COMPILE_ISP___
-#define ___COMPILE_MEM___
-#define ___COMPILE_RST___
-#define ___COMPILE_TIM___
-#define ___COMPILE_TIM2___
-#define ___COMPILE_UART___
-#define ___COMPILE_UTIL___
-#define ___COMPILE_WDT___
+/**
+ *\brief: judgment macro for ISP function
+ */
+#define IS_ISP_MODEL(model)                      \
+    (                                            \
+        (model == MCU_MODEL_STC90C51RC)    ||    \
+        (model == MCU_MODEL_STC90LE51RC)   ||    \
+        (model == MCU_MODEL_STC90C52RC)    ||    \
+        (model == MCU_MODEL_STC90LE52RC)   ||    \
+        (model == MCU_MODEL_STC90C12RC)    ||    \
+        (model == MCU_MODEL_STC90LE12RC)   ||    \
+        (model == MCU_MODEL_STC90C54RDP)   ||    \
+        (model == MCU_MODEL_STC90LE54RDP)  ||    \
+        (model == MCU_MODEL_STC90C58RDP)   ||    \
+        (model == MCU_MODEL_STC90LE58RDP)  ||    \
+        (model == MCU_MODEL_STC90C510RDP)  ||    \
+        (model == MCU_MODEL_STC90LE510RDP) ||    \
+        (model == MCU_MODEL_STC90C512RDP)  ||    \
+        (model == MCU_MODEL_STC90LE512RDP) ||    \
+        (model == MCU_MODEL_STC90C514RDP)  ||    \
+        (model == MCU_MODEL_STC90LE514RDP)       \
+    )
 
-/* ---------- END OF MANUAL CONFIGURATON PART --------- */
-
-/* ---------- @run-time check --------- */
-
-/* --- MCU model check --- */
-#if (_MCU_MODEL_ == _MCU_NULL_)
-    #error HML run-time check:not specify MCU model!(ERROR_CODE-0x01)
+/*****************************************************************************
+ *                           run-time check                                  *
+ *****************************************************************************/
+/**
+ *\brief: MCU clock configuration check
+ */
+#if (defined __CONF_FRE_CLKIN)
+    #define MCU_FRE_CLK __CONF_FRE_CLKIN
+#else
+    #error HML run-time check: error: HML need define input clock frequency! (ERROR_CODE-0x01)
 #endif
 
-/* --- frequency of crystal oscillator --- */
-#ifndef _FRE_OSC_
-    #error HML run-time check:the firmware library need define extern clcok frequency!(ERROR_CODE-0x02)
+/**
+ *\brief: MCU model check
+ */
+#if (defined __CONF_MCU_MODEL)
+    #if IS_STC90_MCU_MODEL(__CONF_MCU_MODEL)
+        #if (__CONF_MCU_MODEL == MCU_MODEL_GENERIC)
+            #warning the value of macro HML_MCU_MODEL will be filled with MCU_MODEL_STC90C52RC
+            #define HML_MCU_MODEL MCU_MODEL_STC90C52RC
+        #else
+            #define HML_MCU_MODEL __CONF_MCU_MODEL
+        #endif
+    #else
+        #error HML run-time check: error: unknow or unsupported MCU model!(ERROR_CODE-0x02)
+    #endif
+#else
+    #error HML run-time check: error: unspecify MCU model!(ERROR_CODE-0x03)
 #endif
 
-/* --- check compile macro --- */
-#if (defined ___COMPILE_TIM___) && (!defined ___COMPILE_EXTI___)
-    #error HML run-time check: TIM part need extern support, please enable macro ___COMPILE_EXTI___(ERROR_CODE-0x03)
+#if IS_ISP_MODEL(HML_MCU_MODEL)
+    #define HAVE_ISP
 #endif
 
-#if (defined ___COMPILE_TIM2___) && (!defined ___COMPILE_EXTI___)
-    #error HML run-time check: TIM2 part need extern support, please enable macro ___COMPILE_EXTI___(ERROR_CODE-0x04)
+/**
+ *\brief: HML compile selection check
+ */
+#ifndef HAVE_ISP
+    #ifdef __CONF_COMPILE_ISP
+        #error HML run-time check: error: specified MCU model does not suppport ISP function. (ERROR_CODE-0x04)
+    #endif
 #endif
 
-#if (defined ___COMPILE_UART___) && ((!defined ___COMPILE_EXTI___) || (!defined ___COMPILE_TIM___) || (!defined ___COMPILE_TIM2___))
-    #error HML run-time check: UART part need extern support, please enable macro ___COMPILE_TIM___  or ___COMPILE_TIM2___ at the same time(ERROR_CODE-0x05)
+#if (defined __CONF_COMPILE_UART) && ((!defined __CONF_COMPILE_TIM) || (!defined __CONF_COMPILE_TIM2))
+    #error HML run-time check: UART part need extern support, please enable macro __CONF_COMPILE_TIM  or __CONF_COMPILE_TIM2 at the same time(ERROR_CODE-0x05)
+#endif
+
+/**
+ *\brief: SDCC version check
+ */
+#if (__SDCC_VERSION_MAJOR == 3)
+    #if (__SDCC_VERSION_MINOR < 6)
+        #error HML run-time check: HML requires SDCC v3.6.0 or later versions (ERROR_CODE-0x06)
+    #endif
+#else
+    #if (__SDCC_VERSION_MAJOR < 3)
+        #error HML run-time check: HML requires SDCC v3.6.0 or later versions (ERROR_CODE-0x06)
+    #endif
 #endif
 
 #endif

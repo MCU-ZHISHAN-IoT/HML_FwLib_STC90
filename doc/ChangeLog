@@ -25,3 +25,19 @@
           (3)update Makefile to v0.2.4
           (4)delete abolished header file intrasm.h
           (5)move file LICENSE to root path of project
+
+>Version :v0.2.0
+ Alias   :
+ Date    :
+ Note    :(1)rename function UART_switchTim as UART_setBaudrateGenerator and refactor it
+          (2)optimize code comment style
+          (3)update MCU model list and add some macro to achieve configuration parameters check function
+          (4)optimize header files
+            - move stc90.h to hw/stc90.h
+            - add header file hml.h instead of conf.h
+            - refactor conf.h and refactor all configuration macro
+            - add header file version.h for HML version information
+          (5)rename en enumeration type INTR_interruptPriority as UTIL_interruptPriority and move it to util.h from 
+             exit.h
+          (6)rename function WDT_clear as WDT_feed
+          (7)update Makefile to v0.2.5

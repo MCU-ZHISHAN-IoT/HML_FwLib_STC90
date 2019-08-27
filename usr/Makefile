@@ -1,13 +1,13 @@
 ##################################################
-# Author     :Weilun Fong | wlf(at)zhishan-iot.tk
-# Date       :2019-07-29
-# Description:Makefile for HML_FwLib_STC90, it will generate a hex format file finally
-# E-mail     :mcu(at)zhishan-iot.tk
-# Make-tool  :GNU Make (http://www.gnu.org/software/make/manual/make.html)
-# Page       :https://hw.zhishan-iot.tk/page/hml/detail/fwlib_stc90.html
-# Tar-mcu    :STC90C53RC, belong to STC micro STC90 series
-# Tar-project:HML_FwLib_STC90
-# Version    :v0.2.4
+# Author     : Weilun Fong | wlf(at)zhishan-iot.tk
+# Date       : 2019-08-25
+# Description: Makefile for HML_FwLib_STC90, it will generate a hex format file finally
+# E-mail     : mcu(at)zhishan-iot.tk
+# Make-tool  : GNU Make (http://www.gnu.org/software/make/manual/make.html)
+# Page       : https://hw.zhishan-iot.tk/page/hml/detail/fwlib_stc90.html
+# Tar-mcu    : STC90C53RC, belong to STC micro STC90 series
+# Tar-project: HML_FwLib_STC90
+# Version    : v0.2.5
 ##################################################
 
 ########################################
@@ -39,7 +39,7 @@ DIR_INC            := $(DIR_ROOT)/inc
 DIR_OUTPUT         := $(DIR_ROOT)/obj
 DIR_SRC            := $(DIR_ROOT)/src
 ##### important file
-FILE_HML_FWLIB     := libhml_stc89.lib
+FILE_HML_FWLIB     := libhml_stc90.lib
 HML_SRC_FILES      := $(wildcard $(DIR_SRC)/*.c)
 HML_REL_FILES      := $(patsubst $(DIR_SRC)/%.c, $(DIR_OUTPUT)/%.rel, $(HML_SRC_FILES))
 MYFILE             ?= test.c
@@ -58,7 +58,7 @@ TARGET_FWLIB       := $(DIR_OUTPUT)/$(FILE_HML_FWLIB)
 ###### compile parameter
 AFLAGS_HML         := -rcs
 CFLAGS_HML         := -c -I$(DIR_INC) -mmcs51 --opt-code-size --std-sdcc99 --code-loc 0x0000 --code-size 0x1FFF --data-loc 0x00
-CFLAGS             := -c -I$(DIR_INC) -mmcs51 --opt-code-size --std-sdcc99 -L$(DIR_OUTPUT) -lhml_8051 --code-loc 0x0000 --code-size 0x1FFF --data-loc 0x00
+CFLAGS             := -c -I$(DIR_INC) -mmcs51 --opt-code-size --std-sdcc99 -L$(DIR_OUTPUT) -lhml_stc90 --code-loc 0x0000 --code-size 0x1FFF --data-loc 0x00
 
 ########################################
 ##### [2]VERSIION INFORMATION
@@ -67,7 +67,7 @@ CFLAGS             := -c -I$(DIR_INC) -mmcs51 --opt-code-size --std-sdcc99 -L$(D
 HML_FWLIB_NAME     := HML_FwLib_STC90
 HML_FWLIB_VERSION  := $(shell $(CAT) $(DIR_ROOT)/VERSION)
 # [note]: we unify version code from v0.1.0 because of the same makefile template
-MAK_VERSION        := v0.2.4
+MAK_VERSION        := v0.2.5
 
 ########################################
 ##### [3]BUILD WORKS
@@ -131,6 +131,8 @@ rebuild:
 ##### version
 .PHONY: version
 version:
-	@$(ECHO) "Makefile for HML_FwLib_xxx [$(MAK_VERSION)]"
-	@$(ECHO) "build project $(HML_FWLIB_NAME) $(HML_FWLIB_VERSION), adapted by Weilun Fong <wlf(at)zhishan-iot.tk>"
+	@$(ECHO) "HmlFwlibMakefile [$(MAK_VERSION)]"
+	@$(ECHO) "General purpose Makefile for HML firmware library."
 	@$(ECHO) "Copyright(c) 2018-2019 ZHISHAN-IoT, all rights reserved."
+	@$(ECHO) ""
+	@$(ECHO) "This Makefile is adapted for project $(HML_FWLIB_NAME) $(HML_FWLIB_VERSION) by Weilun Fong <wlf@zhishan-iot.tk>"
