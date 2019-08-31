@@ -1,11 +1,10 @@
 /*****************************************************************************/
 /** 
- * \file       exti_toggleIo.c
+ * \file       isp_readByte.c
  * \author     Amy Chung | zhongliguo@zhishan-iot.tk
  * \date       
- * \brief      example for interrupt priority
- * \note       a example which shows how to use HML_FwLib_STC90 to toggle P10 
- *             state when EXTI is trigged
+ * \brief      show how to use HML_FwLib_STC90 to use ISP to write and read byte
+ * \note       
  * \version    v0.2
  * \ingroup    example
  * \remarks    test-board: ZS5110; test-MCU: STC90C53RC
@@ -28,15 +27,21 @@
 ******************************************************************************/
 void sys_init(void)
 {
-    EXTI_configTypeDef ec;
-    
-    ec.mode     = EXTI_mode_fallEdge;
-    ec.priority = UTIL_interruptPriority_0;
-    EXTI_config(PERIPH_EXTI_1,&ec);
-    EXTI_cmd(PERIPH_EXTI_1,ENABLE);
+    UART_configTypeDef uc;
+
+    uc.baudrate          = 9600;
+    uc.baudGenerator     = PERIPH_TIM_2;
+    uc.interruptState    = ENABLE;
+    uc.interruptPriority = UTIL_interruptPriority_0;
+    uc.mode              = UART_mode_1;
+    uc.multiBaudrate     = DISABLE;
+    uc.receiveState      = ENABLE;
+
+    UART_config(&uc);
     enableAllInterrupts();
-    
-    GPIO_configPortValue(PERIPH_GPIO_1,0xFF);
+
+    GPIO_configBitValue(PERIPH_GPIO_1,PERIPH_GPIO_PIN_0,SET);
+    ISP_cmd(ENABLE);
 }
 
 /*****************************************************************************/
@@ -52,31 +57,19 @@ void sys_init(void)
 void main(void)
 {
     sys_init();
-    while(true);
-}
 
-/*****************************************************************************/
-/** 
- * \author      Amy Chung
- * \date        
- * \brief       interrupt service function for EXTI1
- * \param[in]   
- * \return      none
- * \ingroup     example
- * \remarks     
-******************************************************************************/
-void exti1_isr(void) __interrupt IE1_VECTOR
-{
-    /* avoid shake */
-    disableAllInterrupts();
-    sleep(20);
-
-    /* make sure the button connected to P33(INT1) */
-    if(GPIO_getBitValue(PERIPH_GPIO_3,PERIPH_GPIO_PIN_3) == RESET)
+    if(ISP_readByte(ISP_ADDR_START) == 'T')
     {
-        GPIO_toggleBitValue(PERIPH_GPIO_1,PERIPH_GPIO_PIN_2);
+        /* reset the module.if 'T' were written successfully,
+        P10 will be lighted*/
+        GPIO_configBitValue(PERIPH_GPIO_1,PERIPH_GPIO_PIN_0,RESET);
+        ISP_eraseByte(ISP_ADDR_START);
     }
-    
-    /* recover */
-    enableAllInterrupts();
+    else
+    {
+        ISP_writeByte(ISP_ADDR_START,'T');
+        UART_sendByte(ISP_readByte(ISP_ADDR_START));  /* show result */
+    }
+
+    while(true);
 }
