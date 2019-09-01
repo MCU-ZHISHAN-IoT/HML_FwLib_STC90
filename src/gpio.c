@@ -48,7 +48,7 @@ void GPIO_configBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin,FunctionalState f)
  * \ingroup     GPIO
  * \remarks     
 ******************************************************************************/
-void GPIO_configPort(PERIPH_GPIO gpio,byte val)
+void GPIO_configPortValue(PERIPH_GPIO gpio,byte val)
 {
     switch(gpio)
     {
