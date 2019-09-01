@@ -1,14 +1,13 @@
 /*****************************************************************************/
 /** 
- * \file       exti_toggleIo.c
- * \author     Amy Chung | zhongliguo@zhishan-iot.tk
+ * \file       test.c
+ * \author     Weilun Fong | wlf@zhishan-iot.tk
  * \date       
- * \brief      example for interrupt priority
- * \note       a example which shows how to use HML_FwLib_STC90 to toggle P10 
- *             state when EXTI is trigged
+ * \brief      a demo file
+ * \note       
  * \version    v0.2
- * \ingroup    example
- * \remarks    test-board: ZS5110; test-MCU: STC90C53RC
+ * \ingroup    generic
+ * \remarks    test-board: TS51-V2.0; test-MCU: STC89C52RC
 ******************************************************************************/
 
 /*****************************************************************************
@@ -18,7 +17,7 @@
 
 /*****************************************************************************/
 /** 
- * \author      Amy Chung
+ * \author      Weilun Fong
  * \date        
  * \brief       initial MCU
  * \param[in]   
@@ -28,20 +27,23 @@
 ******************************************************************************/
 void sys_init(void)
 {
-    EXTI_configTypeDef ec;
+    UART_configTypeDef uc;
     
-    ec.mode     = EXTI_mode_fallEdge;
-    ec.priority = UTIL_interruptPriority_0;
-    EXTI_config(PERIPH_EXTI_1,&ec);
-    EXTI_cmd(PERIPH_EXTI_1,ENABLE);
+    uc.baudrate          = 9600;
+    uc.baudGenerator     = PERIPH_TIM_2;
+    uc.interruptState    = ENABLE;
+    uc.interruptPriority = UTIL_interruptPriority_0;
+    uc.mode              = UART_mode_1;
+    uc.multiBaudrate     = DISABLE;
+    uc.receiveState      = ENABLE;
+    
+    UART_config(&uc);
     enableAllInterrupts();
-    
-    GPIO_configPortValue(PERIPH_GPIO_1,0xFF);
 }
 
 /*****************************************************************************/
 /** 
- * \author      Amy Chung
+ * \author      Weilun Fong
  * \date        
  * \brief       main function
  * \param[in]   
@@ -52,31 +54,10 @@ void sys_init(void)
 void main(void)
 {
     sys_init();
-    while(true);
-}
-
-/*****************************************************************************/
-/** 
- * \author      Amy Chung
- * \date        
- * \brief       interrupt service function for EXTI1
- * \param[in]   
- * \return      none
- * \ingroup     example
- * \remarks     
-******************************************************************************/
-void exti1_isr(void) __interrupt IE1_VECTOR
-{
-    /* avoid shake */
-    disableAllInterrupts();
-    sleep(20);
-
-    /* make sure the button connected to P33(INT1) */
-    if(GPIO_getBitValue(PERIPH_GPIO_3,PERIPH_GPIO_PIN_3) == RESET)
+    while(true)
     {
-        GPIO_toggleBitValue(PERIPH_GPIO_1,PERIPH_GPIO_PIN_2);
+        /* send per 500ms */
+        sleep(500);
+        UART_sendString("Hello,world\r\n");
     }
-    
-    /* recover */
-    enableAllInterrupts();
 }
