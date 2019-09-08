@@ -1,11 +1,11 @@
 /*****************************************************************************/
 /** 
- * \file       exti_toggleIo.c
+ * \file       tim2_toggleIo.c
  * \author     Amy Chung | zhongliguo@zhishan-iot.tk
  * \date       
- * \brief      example for interrupt priority
- * \note       a example which shows how to use HML_FwLib_STC90 to toggle P10 
- *             state when EXTI is trigged
+ * \brief      a example which shows how to toggle state of specified pin periodic
+ *             via timers' interrupt
+ * \note       
  * \version    v0.2
  * \ingroup    example
  * \remarks    test-board: ZS5110; test-MCU: STC90C53RC
@@ -15,7 +15,7 @@
  *                             header file                                   *
  *****************************************************************************/
 #include "hml.h"
-
+ 
 /*****************************************************************************/
 /** 
  * \author      Amy Chung
@@ -28,15 +28,17 @@
 ******************************************************************************/
 void sys_init(void)
 {
-    EXTI_configTypeDef ec;
+    TIM2_configTypeDef tc;
 
-    ec.mode     = EXTI_mode_fallEdge;
-    ec.priority = UTIL_interruptPriority_0;
-    EXTI_config(PERIPH_EXTI_1,&ec);
-    EXTI_cmd(PERIPH_EXTI_1,ENABLE);
+    tc.function          = TIM2_function_tim;
+    tc.interruptState    = ENABLE;
+    tc.interruptPriority = UTIL_interruptPriority_0;
+    tc.mode              = TIM2_mode_0;
+    tc.value             = TIM2_calculateValue(50000);
+
+    TIM2_config(&tc);
+    TIM2_cmd(ENABLE);
     enableAllInterrupts();
-
-    GPIO_configPortValue(PERIPH_GPIO_1,0xFF);
 }
 
 /*****************************************************************************/
@@ -59,24 +61,22 @@ void main(void)
 /** 
  * \author      Amy Chung
  * \date        
- * \brief       interrupt service function for EXTI1
+ * \brief       interrupt service function for TIM2
  * \param[in]   
  * \return      none
  * \ingroup     example
  * \remarks     
 ******************************************************************************/
-void exti1_isr(void) __interrupt IE1_VECTOR
+void TIM2_isr(void) __interrupt TF2_VECTOR
 {
-    /* avoid shake */
-    disableAllInterrupts();
-    sleep(20);
+    static int cnt = 0;
+    TIM2_clearFlag();
 
-    /* make sure the button connected to P33(INT1) */
-    if(GPIO_getBitValue(PERIPH_GPIO_3,PERIPH_GPIO_PIN_3) == RESET)
+    /* per 500ms */
+    cnt++;
+    if(cnt == 10)
     {
         GPIO_toggleBitValue(PERIPH_GPIO_1,PERIPH_GPIO_PIN_2);
+        cnt = 0;
     }
-
-    /* recover */
-    enableAllInterrupts();
 }
