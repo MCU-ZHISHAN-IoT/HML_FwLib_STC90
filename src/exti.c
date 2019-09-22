@@ -47,11 +47,11 @@ void EXTI_cmd(PERIPH_EXTI exti,Action a)
 {
     switch(exti)
     {
-        case PERIPH_EXTI_0:EX0 = a;break;
-        case PERIPH_EXTI_1:EX1 = a;break;
-        case PERIPH_EXTI_2:EX2 = a;break;
-        case PERIPH_EXTI_3:EX3 = a;break;
-        default:break;
+        case PERIPH_EXTI_0: EX0 = a; break;
+        case PERIPH_EXTI_1: EX1 = a; break;
+        case PERIPH_EXTI_2: EX2 = a; break;
+        case PERIPH_EXTI_3: EX3 = a; break;
+        default: break;
     }
 }
 
@@ -70,11 +70,11 @@ void EXTI_setMode(PERIPH_EXTI exti,EXTI_mode mod)
 {
     switch(exti)
     {
-        case PERIPH_EXTI_0:IT0 = mod;break;
-        case PERIPH_EXTI_1:IT1 = mod;break;
-        case PERIPH_EXTI_2:IT2 = mod;break;
-        case PERIPH_EXTI_3:IT3 = mod;break;
-        default:break;
+        case PERIPH_EXTI_0: IT0 = mod; break;
+        case PERIPH_EXTI_1: IT1 = mod; break;
+        case PERIPH_EXTI_2: IT2 = mod; break;
+        case PERIPH_EXTI_3: IT3 = mod; break;
+        default: break;
     }
 }
 

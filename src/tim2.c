@@ -196,11 +196,14 @@ void TIM2_INT_setPriority(UTIL_interruptPriority p)
 /** 
  * \author      Jiabin Hsu
  * \date        
- * \brief       enable or disable T2EX function of timer-2
- * \param[in]   p: expected interrupt priority
+ * \brief       enable or disable T2EX pin
+ * \param[in]   a: expected action
  * \return      none
  * \ingroup     TIM2
- * \remarks     determine whether the falling jump makes capture or reload or not
+ * \remarks     when enable, allows a capture or reload to occur as a result of a
+ *              negative transition on T2EX if timer-2 is not being used to clock
+ *              the serial port. EXEN2 = 0 causes timer-2 to ignore events at 
+ *              T2EX
 ******************************************************************************/
 void TIM2_INT_T2EX_cmd(Action a)
 {
