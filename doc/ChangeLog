@@ -1,43 +1,42 @@
-#FwLib       :HML_FwLib_STC90
-#Description :ChangeLog file of HML_FwLib_STC90
-#E-mail      :mcu(at)zhishant-iot.tk
-#Organization:ZHISHAN-IoT(https://zhishan-iot.tk)
-#Page        :https://hw.zhishant-iot.tk/page/hml/detail/fwlib_stc90.html
+#FwLib       : HML_FwLib_STC90
+#Description : ChangeLog file of HML_FwLib_STC90
+#E-mail      : mcu@zhishant-iot.tk
+#Organization: ZHISHAN-IoT(https://zhishan-iot.tk)
+#Page        : https://hw.zhishant-iot.tk/page/hml/detail/fwlib_stc90.html
 
->Version :v0.0.0
+>Version : v0.0.0
  Alias   :
- Date    :2018-06-05
- Note    :The first version of HML_FwLib_STC90!
+ Date    : 2018-06-05
+ Note    : The first version of HML_FwLib_STC90!
 
->Version :v0.0.1
- Alias   :V0R1
- Date    :2019-03-12
- Note    :(1)rename license.txt as LICENSE; rename directory [sample] as [example]; rename directory [user] as [usr]
-          (2)refactor all code
-          (3)add new function GPIO_P45_cmd
-          (4)add bit operation function
+>Version : v0.0.1
+ Alias   : V0R1
+ Date    : 2019-03-12
+ Note    : (1)rename license.txt as LICENSE; rename directory [sample] as [example]; rename directory [user] as [usr]
+           (2)refactor all code
+           (3)add new function GPIO_P45_cmd
+           (4)add bit operation function
           
->Version :v0.1.0
+>Version : v0.1.0
  Alias   :
- Date    :2019-08-03
- Note    :(1)add AUTHORS, rename log.txt as ChangeLog
-          (2)fix bug of macro CONFB in bit.h
-          (3)update Makefile to v0.2.4
-          (4)delete abolished header file intrasm.h
-          (5)move file LICENSE to root path of project
+ Date    : 2019-08-03
+ Note    : (1)add AUTHORS, rename log.txt as ChangeLog
+           (2)fix bug of macro CONFB in bit.h
+           (3)update Makefile to v0.2.4
+           (4)delete abolished header file intrasm.h
+           (5)move file LICENSE to root path of project
 
->Version :v0.2.0
+>Version : v0.2.0
  Alias   :
- Date    :
- Note    :(1)rename function UART_switchTim as UART_setBaudrateGenerator and refactor it
-          (2)optimize code comment style
-          (3)update MCU model list and add some macro to achieve configuration parameters check function
-          (4)optimize header files
-            - move stc90.h to hw/stc90.h
-            - add header file hml.h instead of conf.h
-            - refactor conf.h and refactor all configuration macro
-            - add header file version.h for HML version information
-          (5)rename en enumeration type INTR_interruptPriority as UTIL_interruptPriority and move it to util.h from 
-             exit.h
-          (6)rename function WDT_clear as WDT_feed
-          (7)update Makefile to v0.2.5
+ Date    : 2019-09-30
+ Note    : (1)rename function UART_switchTim as UART_setBaudrateGenerator and refactor it
+           (2)optimize code comment style
+           (3)update MCU model list and add some macro to achieve configuration parameters check function
+           (4)optimize header files
+             - move stc90.h to hw/stc90.h
+             - add header file hml.h instead of conf.h
+             - refactor conf.h and refactor all configuration macro
+             - add header file version.h for HML version information
+           (5)rename en enumeration type INTR_interruptPriority as UTIL_interruptPriority and move it to util.h from exit.h
+           (6)rename function WDT_clear as WDT_feed
+           (7)update Makefile to v0.2.5
