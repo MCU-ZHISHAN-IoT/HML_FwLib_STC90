@@ -49,6 +49,7 @@ typedef enum
 /*****************************************************************************
  *                                macro                                      *
  *****************************************************************************/
+#define WORD_MAX 0xFFFF
 
 /**
  *\brief: mark MCU model of STC90 series(suffix letter 'P' represents '+' )
