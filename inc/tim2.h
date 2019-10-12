@@ -21,7 +21,7 @@
 /*****************************************************************************
  *                                macro                                      *
  *****************************************************************************/
-#define TIM2_MAXTICK 0xFFFF
+#define TIM2_MAXTICK    WORD_MAX
 
 /*****************************************************************************
  *                           enumeration type                                *
@@ -90,6 +90,6 @@ void TIM2_setValue(unsigned int val);
 void TIM2_BAUD_cmd(TIM2_baudClock t,Action a);
 void TIM2_INT_cmd(Action a);
 void TIM2_INT_setPriority(UTIL_interruptPriority p);
-void TIM2_INT_T2EX_cmd(Action a);
+void TIM2_T2EX_cmd(Action a);
 
 #endif

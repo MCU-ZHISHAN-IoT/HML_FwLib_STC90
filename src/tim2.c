@@ -280,7 +280,7 @@ void TIM2_INT_setPriority(UTIL_interruptPriority p)
  *              the serial port. EXEN2 = 0 causes timer-2 to ignore events at 
  *              T2EX
 ******************************************************************************/
-void TIM2_INT_T2EX_cmd(Action a)
+void TIM2_T2EX_cmd(Action a)
 {
     EXEN2 = a;
 }
