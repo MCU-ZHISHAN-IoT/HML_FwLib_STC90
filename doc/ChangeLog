@@ -16,7 +16,7 @@
            (2)refactor all code
            (3)add new function GPIO_P45_cmd
            (4)add bit operation function
-          
+
 >Version : v0.1.0
  Alias   :
  Date    : 2019-08-03
@@ -40,3 +40,8 @@
            (5)rename en enumeration type INTR_interruptPriority as UTIL_interruptPriority and move it to util.h from exit.h
            (6)rename function WDT_clear as WDT_feed
            (7)update Makefile to v0.2.5
+
+>Version : v0.2.1
+ Alias   :
+ Date    : 2019-10-28
+ Note    : (1)fix bugs and optimize code of TIM2 module
