@@ -8,27 +8,28 @@
  * \ingroup     generic
 ******************************************************************************/
  
-#ifndef ___HML_H___
-#define ___HML_H___
+#ifndef ___HML_HML_H___
+#define ___HML_HML_H___
 
 /*****************************************************************************
  *                             header file                                   *
  *****************************************************************************/
-#include "conf.h"
-#include "macro.h"
+#include "hml/conf.h"
+#include "hml/macro.h"
+#include "hml/types.h"
 /*****************************************************************************/
-#include "hw/stc90.h"
+#include "hml/stc90.h"
 /*****************************************************************************/
-#include "exti.h"
-#include "gpio.h"
-#include "isp.h"
-#include "mem.h"
-#include "rst.h"
-#include "tim.h"
-#include "tim2.h"
-#include "uart.h"
-#include "util.h"
-#include "version.h"
-#include "wdt.h"
+#include "hml/exti.h"
+#include "hml/gpio.h"
+#include "hml/isp.h"
+#include "hml/mem.h"
+#include "hml/rst.h"
+#include "hml/tim.h"
+#include "hml/tim2.h"
+#include "hml/uart.h"
+#include "hml/util.h"
+#include "hml/version.h"
+#include "hml/wdt.h"
 
 #endif

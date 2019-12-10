@@ -8,7 +8,7 @@
  * \ingroup     UTIL
 ******************************************************************************/
 
-#include "util.h"
+#include "hml/util.h"
 
 #ifdef __CONF_COMPILE_UTIL
 
@@ -53,10 +53,10 @@ void enableAllInterrupts(void)
  * \ingroup     UTIL
  * \remarks     
 ******************************************************************************/
-void sleep(unsigned int t)
+void sleep(uint16_t t)
 {
-    u8 i = 0x00;
-    u8 j = 0x00;
+    uint8_t i = 0x00;
+    uint8_t j = 0x00;
 
     #if ( MCU_FRE_CLK == 11059200L )
 

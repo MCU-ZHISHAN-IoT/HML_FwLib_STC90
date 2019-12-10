@@ -8,7 +8,7 @@
  * \ingroup     ISP
 ******************************************************************************/
 
-#include "isp.h"
+#include "hml/isp.h"
 
 #ifdef HAVE_ISP
 
@@ -39,7 +39,7 @@ void ISP_cmd(Action a)
  * \ingroup     ISP
  * \remarks     
 ******************************************************************************/
-bool ISP_eraseByte(unsigned int addr)
+bool ISP_eraseByte(uint16_t addr)
 {
     /* check address */
     if((addr < ISP_ADDR_START) || (addr > ISP_ADDR_END))
@@ -85,9 +85,9 @@ void ISP_idle(void)
  * \ingroup     ISP
  * \remarks     
 ******************************************************************************/
-byte ISP_readByte(unsigned int addr)
+byte ISP_readByte(uint16_t addr)
 {
-    unsigned char dat = 0x00;
+    uint8_t dat = 0x00;
 
     ISP_cmd(ENABLE);
     ISP_setAddress(addr);
@@ -110,7 +110,7 @@ byte ISP_readByte(unsigned int addr)
  * \ingroup     ISP
  * \remarks     
 ******************************************************************************/
-void ISP_setAddress(unsigned int addr)
+void ISP_setAddress(uint16_t addr)
 {
     ISP_ADDRL = addr;
     ISP_ADDRH = addr >> 0x8;
@@ -158,7 +158,7 @@ void ISP_trig(void)
  * \ingroup     ISP
  * \remarks     
 ******************************************************************************/
-bool ISP_writeByte(unsigned int addr,byte dat)
+bool ISP_writeByte(uint16_t addr,byte dat)
 {
     if((addr < ISP_ADDR_START) || (addr > ISP_ADDR_END))
     {

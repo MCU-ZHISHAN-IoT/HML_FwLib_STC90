@@ -8,14 +8,15 @@
  * \ingroup     UTIL
 ******************************************************************************/
 
-#ifndef ___UTIL_H___
-#define ___UTIL_H___
+#ifndef ___HML_UTIL_H___
+#define ___HML_UTIL_H___
 
 /*****************************************************************************
  *                             header file                                   *
  *****************************************************************************/
-#include "hw/stc90.h"
-#include "macro.h"
+#include "hml/stc90.h"
+#include "hml/macro.h"
+#include "hml/types.h"
 
 /*****************************************************************************
  *                           enumeration type                                *
@@ -36,6 +37,6 @@ typedef enum
  *****************************************************************************/
 void disableAllInterrupts(void);
 void enableAllInterrupts(void);
-void sleep(unsigned int t);
+void sleep(uint16_t t);
 
 #endif

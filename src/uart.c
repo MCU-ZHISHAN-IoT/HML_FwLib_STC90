@@ -9,7 +9,7 @@
  * \ingroup     UART
 ******************************************************************************/
 
-#include "uart.h"
+#include "hml/uart.h"
 
 #ifdef __CONF_COMPILE_UART
 
@@ -74,6 +74,7 @@ void UART_config(UART_configTypeDef *uc)
             tc.interruptPriority = DISABLE;
             tc.mode              = TIM_mode_2;
             tc.value             = UART_getBaudGeneratorInitValue(uc->baudrate,PERIPH_TIM_1);
+            TIM2_BAUD_cmd(TIM2_baudClock_receive | TIM2_baudClock_transmit,DISABLE);
             TIM_config(PERIPH_TIM_1,&tc);
             TIM_cmd(PERIPH_TIM_1,ENABLE);
         } break; 
@@ -83,9 +84,9 @@ void UART_config(UART_configTypeDef *uc)
             tc2.interruptState    = DISABLE;
             tc2.interruptPriority = DISABLE;
             tc2.mode              = TIM2_mode_2;
-            tc2.value             = UART_getBaudGeneratorInitValue(uc->baudrate,PERIPH_TIM_2);
-            RCAP2L = tc2.value;
-            RCAP2H = (tc2.value >> 8);
+            tc2.value             = 0x00;
+            tc2.reloadValue       = UART_getBaudGeneratorInitValue(uc->baudrate,PERIPH_TIM_2);
+            TIM2_BAUD_cmd(TIM2_baudClock_receive | TIM2_baudClock_transmit,ENABLE);
             TIM2_config(&tc2);
             TIM2_cmd(ENABLE);
         } break;  
@@ -106,9 +107,9 @@ void UART_config(UART_configTypeDef *uc)
  * \ingroup     UART
  * \remarks     
 ******************************************************************************/
-unsigned int UART_getBaudGeneratorInitValue(uint32_t baud,PERIPH_TIM tim)
+uint16_t UART_getBaudGeneratorInitValue(uint32_t baud,PERIPH_TIM tim)
 {
-    unsigned char tmp = 0x00;
+    uint8_t tmp = 0x00;
 
     /* baud = (2^SMOD/32) * _FRE_OSC_/(256-x)*12 */
     switch(tim)
@@ -249,7 +250,7 @@ void UART_setBaudrateGenerator(PERIPH_TIM tim)
 ******************************************************************************/
 void UART_setMode(UART_mode m)
 {
-    SCON = (SCON & 0x3F) | ((unsigned char)m << 0x6);
+    SCON = (SCON & 0x3F) | ((uint8_t)m << 0x6);
 }
 
 /*****************************************************************************/
