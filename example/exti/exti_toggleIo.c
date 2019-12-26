@@ -1,14 +1,14 @@
 /*****************************************************************************/
 /** 
- * \file       exti_toggleIo.c
- * \author     Amy Chung | zhongliguo@zhishan-iot.tk
- * \date       
- * \brief      example for interrupt priority
- * \note       a example which shows how to use HML_FwLib_STC90 to toggle P10 
- *             state when EXTI is trigged
- * \version    v0.2
- * \ingroup    example
- * \remarks    test-board: ZS5110; test-MCU: STC90C53RC
+ * \file        exti_toggleIo.c
+ * \author      Amy Chung | zhongliguo@zhishan-iot.tk
+ * \date        
+ * \brief       example for interrupt priority
+ * \note        a example which shows how to use HML_FwLib_STC90 to toggle P10 
+ *              state when EXTI is trigged
+ * \version     v0.3
+ * \ingroup     example
+ * \remarks     test-board: ZS5110; test-MCU: STC90C53RC
 ******************************************************************************/
 
 /*****************************************************************************

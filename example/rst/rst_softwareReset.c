@@ -1,13 +1,13 @@
 /*****************************************************************************/
 /** 
- * \file       rst_softwareReset.c
- * \author     Amy Chung | zhongliguo@zhishan-iot.tk
- * \date       
- * \brief      a example for software reset
- * \note       
- * \version    v0.2
- * \ingroup    example
- * \remarks    test-board: ZS5110; test-MCU: STC90C53RC
+ * \file        rst_softwareReset.c
+ * \author      Amy Chung | zhongliguo@zhishan-iot.tk
+ * \date        
+ * \brief       a example for software reset
+ * \note        
+ * \version     v0.3
+ * \ingroup     example
+ * \remarks     test-board: ZS5110; test-MCU: STC90C53RC
 ******************************************************************************/
 
 /*****************************************************************************

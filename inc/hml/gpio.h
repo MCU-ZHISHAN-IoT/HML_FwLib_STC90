@@ -5,7 +5,7 @@
  * \author      Weilun Fong | wlf@zhishan-iot.tk
  * \brief       operations for GPIO module
  * \note        
- * \version     v0.2
+ * \version     v0.3
  * \ingroup     GPIO
 ******************************************************************************/
 

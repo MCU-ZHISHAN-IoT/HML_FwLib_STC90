@@ -1,13 +1,13 @@
 /*****************************************************************************/
 /** 
- * \file       isp_readByte.c
- * \author     Amy Chung | zhongliguo@zhishan-iot.tk
- * \date       
- * \brief      show how to use HML_FwLib_STC90 to use ISP to write and read byte
- * \note       
- * \version    v0.2
- * \ingroup    example
- * \remarks    test-board: ZS5110; test-MCU: STC90C53RC
+ * \file        isp_readByte.c
+ * \author      Amy Chung | zhongliguo@zhishan-iot.tk
+ * \date        
+ * \brief       show how to use HML_FwLib_STC90 to use ISP to write and read byte
+ * \note        
+ * \version     v0.3
+ * \ingroup     example
+ * \remarks     test-board: ZS5110; test-MCU: STC90C53RC
 ******************************************************************************/
 
 /*****************************************************************************

@@ -1,13 +1,13 @@
 /*****************************************************************************/
 /** 
- * \file       wdt_feedDog.c
- * \author     Amy Chung | zhongliguo(at)zhishan-iot.tk
- * \date       
- * \brief      a demo for on-chip watchdog
- * \note       
- * \version    v0.2
- * \ingroup    example
- * \remarks    test-board: ZS5110; test-MCU: STC90C53RC
+ * \file        wdt_feedDog.c
+ * \author      Amy Chung | zhongliguo(at)zhishan-iot.tk
+ * \date        
+ * \brief       a demo for on-chip watchdog
+ * \note        
+ * \version     v0.3
+ * \ingroup     example
+ * \remarks     test-board: ZS5110; test-MCU: STC90C53RC
 ******************************************************************************/
 
 /*****************************************************************************

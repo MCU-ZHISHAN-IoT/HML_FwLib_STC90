@@ -1,13 +1,13 @@
 /*****************************************************************************/
 /** 
- * \file       tim2_baudrateGenerator.c
- * \author     Amy Chung | zhongliguo@zhishan-iot.tk
- * \date       
- * \brief      a example which show how to use HML_FwLib_STC90 to use timer-2 as a baud rate producer
- * \note       
- * \version    v0.2
- * \ingroup    example
- * \remarks    test-board: ZS5110; test-MCU: STC90C53RC
+ * \file         tim2_baudrateGenerator.c
+ * \author       Amy Chung | zhongliguo@zhishan-iot.tk
+ * \date         
+ * \brief        a example which show how to use HML_FwLib_STC90 to use timer-2 as a baud rate generator
+ * \note        
+ * \version     v0.3
+ * \ingroup     example
+ * \remarks     test-board: ZS5110; test-MCU: STC90C53RC
 ******************************************************************************/
 
 /*****************************************************************************

@@ -4,7 +4,7 @@
  * \author      Jiabin Hsu | zsiothsu@zhishan-iot.tk
  * \brief       operations for watchdog
  * \note        
- * \version     v0.2
+ * \version     v0.3
  * \ingroup     WDT
 ******************************************************************************/
 

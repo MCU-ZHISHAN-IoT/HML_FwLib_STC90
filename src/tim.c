@@ -5,7 +5,7 @@
  * \author      Weillun Fong | wlf@zhishan-iot.tk
  * \brief       operations for timers
  * \note        not for timer-2
- * \version     v0.2
+ * \version     v0.3
  * \ingroup     TIM
 ******************************************************************************/
 

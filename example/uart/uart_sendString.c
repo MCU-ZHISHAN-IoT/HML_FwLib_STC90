@@ -1,15 +1,15 @@
 /*****************************************************************************/
 /** 
- * \file       uart_sendString.c
- * \author     Amy Chung   | zhongliguo(at)zhishan-iot.tk
- * \author     Weilun Fong | wlf(at)zhishan-iot.tk
- * \date       
- * \brief      a example which shows how to send a string via UART
- * \note       
- * \version    v0.2
- * \ingroup    example
- * \remarks    test-board: ZS5110; test-MCU: STC90C53RC; use TIM2 as baudrate
- *             generator
+ * \file        uart_sendString.c
+ * \author      Amy Chung   | zhongliguo(at)zhishan-iot.tk
+ * \author      Weilun Fong | wlf(at)zhishan-iot.tk
+ * \date        
+ * \brief       a example which shows how to send a string via UART
+ * \note        
+ * \version     v0.3
+ * \ingroup     example
+ * \remarks     test-board: ZS5110; test-MCU: STC90C53RC; use TIM2 as baudrate
+ *              generator
 ******************************************************************************/
 
 /*****************************************************************************
