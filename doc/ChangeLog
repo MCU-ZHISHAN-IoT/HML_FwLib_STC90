@@ -51,3 +51,10 @@
  Date    : 2019-12-26
  Note    : (1)move all header files to new path
            (2)add header files hml/types.h for type define
+
+>Version :
+ Alias   :
+ Date    :
+ Note    : (1)update Makefile to v0.2.6
+             - support <library> target, user can get usage via <make help>
+             - optimize <make version> function
