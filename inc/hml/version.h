@@ -16,7 +16,7 @@
  *****************************************************************************/
 
 /**
- *\ brief: string literal representation of the current library version
+ *\brief: string literal representation of the current library version
  */
 #define __HML_VERSION_STRING__ "0.3.1"
 
@@ -27,7 +27,7 @@
 #define HML_VERSION_NAME "HML_FwLib_STC90"
 
 /**
- *\ brief:
+ *\brief:
  * Numerical representation of the current library version.
  *
  * In the numerical representation, the major number is multiplied by
@@ -63,7 +63,7 @@
 #define __HML_VERSION_PATCH__ 1
 
 /**
- *\@deprecated: following macro will be abolished in next minor version
+ *\ @deprecated: following macro will be abolished in next minor version
  */
 #ifdef HML_VERSION_MAJOR
     #undef HML_VERSION_MAJOR
