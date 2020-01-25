@@ -30,8 +30,8 @@
  */
 typedef enum
 {
-    TIM2_baudClock_receive  = 0x0,   /* receive clock */
-    TIM2_baudClock_transmit = 0x1    /* transmit clock */
+    TIM2_baudClock_receive  = 0x1,   /* receive clock */
+    TIM2_baudClock_transmit = 0x2    /* transmit clock */
 } TIM2_baudClock;
 
 /**
