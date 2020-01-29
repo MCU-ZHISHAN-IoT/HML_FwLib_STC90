@@ -18,12 +18,18 @@
 /**
  *\brief: configure clock frequency of MCU
  */
-#define __CONF_FRE_CLKIN 11059200L
+#ifndef __CONF_FRE_CLKIN
+    #warning no specified clock frequency, HML will fill it with 11.0592MHz
+    #define __CONF_FRE_CLKIN 11059200UL
+#endif
 
 /**
  *\brief: configure module of MCU
  */
-#define __CONF_MCU_MODEL MCU_MODEL_STC90C52RC
+#ifndef __CONF_MCU_MODEL
+    #warning no specified MCU model, HML will fill it with STC90C52RC
+    #define __CONF_MCU_MODEL MCU_MODEL_STC90C52RC
+#endif
 
 /**
  *\brief: select HML module which take part in compilation
