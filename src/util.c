@@ -44,41 +44,113 @@ void enableAllInterrupts(void)
 }
 
 /*****************************************************************************/
-/** 
- * \author      Weilun Fong
- * \date        
+/**
+ * \author      Qiyuan Chen & Jiabin Hsu
+ * \date        2020/01/28
+ * \brief       get _sleep_1ms initial value
+ * \param[in]   none
+ * \return      none
+ * \ingroup     UTIL
+ * \remarks     private function, don' use it
+******************************************************************************/
+uint16_t _sleep_getInitValue(void)
+{
+    return (uint16_t)(MCU_FRE_CLK/(float)12000/8) - 2;
+}
+
+/*****************************************************************************/
+/**
+ * \author      Qiyuan Chen
+ * \date        2020/01/28
+ * \brief       sleep 1 ms
+ * \param[in]   none
+ * \return      none
+ * \ingroup     UTIL
+ * \remarks     private function, don' use it
+******************************************************************************/
+void _sleep_1ms(void)
+{
+    __asm
+        mov ar5, r6                 ;#1
+    delay1ms_loop$:
+        nop                         ;#1
+        nop                         ;#1
+        nop                         ;#1
+        nop                         ;#1
+        nop                         ;#1
+        nop                         ;#1
+        djnz r5, delay1ms_loop$     ;#2
+        ret                         ;#2
+    __endasm;
+}
+
+/*****************************************************************************/
+/**
+ * \author      Jiabin Hsu
+ * \date        2020/01/28
  * \brief       software delay according to MCU clock frequency
  * \param[in]   t: how many one ms you want to delay
  * \return      none
  * \ingroup     UTIL
- * \remarks     
+ * \remarks
 ******************************************************************************/
 void sleep(uint16_t t)
 {
-    uint8_t i = 0x00;
-    uint8_t j = 0x00;
+    __asm
+        push ar5
+        push ar6
+        push ar7
 
-    #if ( MCU_FRE_CLK == 11059200L )
+        push dph
+        push dpl
 
-        while(t--)
-        {
-            j = 110;
-            while(j--);
-        }
+    ; freq -> r6,r7
+        lcall __sleep_getInitValue
+        mov ar6,dpl
+        mov ar7,dph
 
-    #elif ( MCU_FRE_CLK == 12000000L )
+    ; t -> dptr
+        pop dpl
+        pop dph
 
-        while(t--)
-        {
-            j = 120;
-            while(j--);
-        }
+    ; 0xFFFF - t
+        clr c
+        mov a,#0xFF
+        subb a,dpl
+        mov dpl,a
+        mov a,#0xFF
+        subb a,dph
+        mov dph,a
 
-    #else
+    ; return if time equals 0
+        mov a,dpl
+        anl a,dph
+        cpl a
+        jz ENDL$
 
-    //TODO
+    ; loop for sleep
+    ; loop from (0xFFFF - t) to (0xFFFF)
+    LOOP$:
+        lcall __sleep_1ms               ;#8*((frep/12000)-2)+5
+        inc dptr                        ;#1
+        mov a,dpl                       ;#1
+        anl a,dph                       ;#1
+        cpl a                           ;#1
+        nop                             ;#1
+        nop                             ;#1
+        nop                             ;#1
+        jnz LOOP$                       ;#2
+    ENDL$:
+        pop ar7
+        pop ar6
+        pop ar5
+        ret
+    __endasm;
 
-    #endif
+    /**
+     * @note: disable SDCC warning
+     */
+    t = 0;
 }
 
 #else
