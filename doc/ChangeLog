@@ -61,6 +61,10 @@
               update Makefile to v0.3.0
              - optimize information print
              - support variable MCU, CODE, XRAM
+              update Makefile to v0.3.1
+             - simplify configure step
+             - change code comment style
+             - add variable CONF, VERBOSE
            (2)refactor version.h
            (3)optimize macro for compile select
            (4)add function UART_getByte and UART_sendHex
