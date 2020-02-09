@@ -24,6 +24,18 @@
 #endif
 
 /**
+ *\brief: configure prescaler of MCU
+ *
+ *\note : in order to switch 6T/12T mode successfully, user must also do related 
+ *        operations via select option inside official <stc-isp> software and restart 
+ *        MCU. Otherwise, user can't observe expected phenomenon.
+ */
+#ifndef __CONF_MCU_PRESCALER
+    #warning no specified MCU prescaler, HML will fill it with 12(12T mode)
+    #define __CONF_MCU_PRESCALER 12
+#endif
+
+/**
  *\brief: configure module of MCU
  */
 #ifndef __CONF_MCU_MODEL
