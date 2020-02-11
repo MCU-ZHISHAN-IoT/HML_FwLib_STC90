@@ -36,7 +36,7 @@
 /**
  *\brief: baudrate of zcli
  */
-#define ZCLI_BAUDRANTE           115200
+#define ZCLI_BAUDRANTE            115200
 
 /**
  *\brief: zcli max arguments number support
