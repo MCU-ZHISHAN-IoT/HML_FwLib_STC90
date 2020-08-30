@@ -52,9 +52,9 @@
  Note    : (1)move all header files to new path
            (2)add header files hml/types.h for type define
 
->Version :
+>Version : v0.3.1
  Alias   :
- Date    :
+ Date    : 2020-08-30
  Note    : (1)update Makefile to v0.2.6
              - support <library> target, user can get usage via <make help>
              - optimize <make version> function
@@ -69,3 +69,8 @@
            (3)optimize macro for compile select
            (4)add function UART_getByte and UART_sendHex
            (5)support 6T mode
+           (6)add example zCLI
+           (7)optimize sleep function
+           (8)correct the value of enumerated type 'TIM2_baudblock'
+
+

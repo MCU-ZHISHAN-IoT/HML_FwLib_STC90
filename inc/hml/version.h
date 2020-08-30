@@ -45,12 +45,12 @@
 /**
  *\breif: string literal representation of the release date.
  */
-#define __HML_DATE_STRING__ "20200131"
+#define __HML_DATE_STRING__ "20200830"
 
 /**
  *\breif: numerical representation of the release date.
  */
-#define __HML_DATE__ 20200131UL
+#define __HML_DATE__ 20200830UL
 
 /**
  *\breif: library major version number.
