@@ -21,7 +21,7 @@
  *****************************************************************************/
 
 /**
- *\brief: mark MCU model of STC90 series(suffix letter 'P' represents '+' )
+ * \brief mark MCU model of STC90 series(suffix letter 'P' represents '+' )
  *        keep the same order with datasheet
  */
 #define MCU_MODEL_GENERIC         0x01
@@ -51,7 +51,7 @@
 #define MCU_MODEL_STC90LE516RDP   0x18
 
 /**
- *\brief: check macro for MCU model
+ * \brief check macro for MCU model
  */
 #define IS_STC90_MCU_MODEL(model)                \
     (                                            \
@@ -83,7 +83,7 @@
     )
 
 /**
- *\brief: judgment macro for ISP function
+ * \brief judgment macro for ISP function
  */
 #define IS_ISP_MODEL(model)                      \
     (                                            \
@@ -106,7 +106,7 @@
     )
 
 /**
- *\brief: compile select
+ * \brief compile select
  */
 #if (__CONF_COMPILE_EXTI == 1)
     #define COMPILE_EXTI
@@ -140,7 +140,7 @@
 #endif
 
 /**
- *\brief: configure prescaler of MCU
+ * \brief configure prescaler of MCU
  */
 #define MCU_PRESCALER __CONF_MCU_PRESCALER
 
@@ -148,7 +148,7 @@
  *                           run-time check                                  *
  *****************************************************************************/
 /**
- *\brief: MCU clock configuration check
+ * \brief MCU clock configuration check
  */
 #if (defined __CONF_FRE_CLKIN)
     #define MCU_FRE_CLK __CONF_FRE_CLKIN
@@ -157,14 +157,14 @@
 #endif
 
 /**
- *\brief: MCU clock prescaler(6T/12T) check
+ * \brief MCU clock prescaler(6T/12T) check
  */
 #if (MCU_PRESCALER != 6) && (MCU_PRESCALER != 12) 
     #error HML run-time check: error: value of macro MCU_PRESCALER must be 6 or 12! (ERROR_CODE-0x02)
 #endif
 
 /**
- *\brief: MCU model check
+ * \brief MCU model check
  */
 #if (defined __CONF_MCU_MODEL)
     #if IS_STC90_MCU_MODEL(__CONF_MCU_MODEL)
@@ -186,7 +186,7 @@
 #endif
 
 /**
- *\brief: HML compile selection check
+ * \brief HML compile selection check
  */
 #ifndef HAVE_ISP
     #ifdef COMPILE_ISP
@@ -199,7 +199,7 @@
 #endif
 
 /**
- *\brief: SDCC version check
+ * \brief SDCC version check
  */
 #if (__SDCC_VERSION_MAJOR == 3)
     #if (__SDCC_VERSION_MINOR < 6)

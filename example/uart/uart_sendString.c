@@ -60,6 +60,6 @@ void main(void)
     {
         /* send per 500ms */
         sleep(500);
-        UART_sendString("Hello,world\r\n");
+        UART_sendString("Hello, world!\r\n");
     }
 }

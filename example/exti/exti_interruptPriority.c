@@ -12,7 +12,7 @@
 ******************************************************************************/
 
 /**
- *\extra-note:
+ * \note
  * (1) This file configures TIM0 priority as lowest priority(INTR_priority_0), 
  *     EXTI0's priority is lower priority(INTR_priority_1), and EXTI1 's priority 
  *     is highest(INTR_priority_1). At the same time, each interrupt source 
@@ -32,7 +32,7 @@
  *****************************************************************************/
 
 /**
- *\brief: LED define
+ * \brief LED define
  */
 #define PERIPH_LED           PERIPH_GPIO_2
 #define PERIPH_LED_TIM0      PERIPH_GPIO_PIN_0   /* indicator LED for TIM0 */
@@ -40,7 +40,7 @@
 #define PERIPH_LED_EXTI1     PERIPH_GPIO_PIN_2   /* indicator LED for EXTI1 */
 
 /**
- *\brief: key define
+ * \brief key define
  */
 #define PERIPH_KEY           PERIPH_GPIO_3
 #define PERIPH_KEY_EXTI0     PERIPH_GPIO_PIN_2   /* key connected to EXTI0 */
@@ -65,22 +65,22 @@ void sys_init(void)
     tc.interruptState    = ENABLE;
     tc.interruptPriority = UTIL_interruptPriority_0;
     tc.mode              = TIM_mode_1;
-    tc.value             = TIM_calculateValue(50000,TIM_mode_1);
+    tc.value             = TIM_calculateValue(50000, TIM_mode_1);
 
-    TIM_config(PERIPH_TIM_0,&tc);
-    TIM_cmd(PERIPH_TIM_0,ENABLE);
+    TIM_config(PERIPH_TIM_0, &tc);
+    TIM_cmd(PERIPH_TIM_0, ENABLE);
 
     ec.mode     = EXTI_mode_fallEdge;
     ec.priority = UTIL_interruptPriority_1;
-    EXTI_config(PERIPH_EXTI_0,&ec);
-    EXTI_cmd(PERIPH_EXTI_0,ENABLE);
+    EXTI_config(PERIPH_EXTI_0, &ec);
+    EXTI_cmd(PERIPH_EXTI_0, ENABLE);
 
     ec.priority = UTIL_interruptPriority_2;
-    EXTI_config(PERIPH_EXTI_1,&ec);
-    EXTI_cmd(PERIPH_EXTI_1,ENABLE);
+    EXTI_config(PERIPH_EXTI_1, &ec);
+    EXTI_cmd(PERIPH_EXTI_1, ENABLE);
     enableAllInterrupts();
 
-    GPIO_configPortValue(PERIPH_LED,0xFF);
+    GPIO_configPortValue(PERIPH_LED, 0xFF);
 }
 
 /*****************************************************************************/
@@ -117,7 +117,7 @@ void tim0_isr(void) __interrupt TF0_VECTOR
     cnt++;
     if(cnt == 10)
     {
-        GPIO_toggleBitValue(PERIPH_LED,PERIPH_LED_TIM0);
+        GPIO_toggleBitValue(PERIPH_LED, PERIPH_LED_TIM0);
         cnt = 0;
     }
 }

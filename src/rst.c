@@ -25,8 +25,8 @@
 void RST_reset(RST_bootarea area)
 {
     SET_BIT_MASK(ISP_CONTR,ISPEN);
-    CONFB(ISP_CONTR,BIT_NUM_SWBS,area);
-    SET_BIT_MASK(ISP_CONTR,SWRST);
+    CONFB(ISP_CONTR, BIT_NUM_SWBS, area);
+    SET_BIT_MASK(ISP_CONTR, SWRST);
 }
 
 #else

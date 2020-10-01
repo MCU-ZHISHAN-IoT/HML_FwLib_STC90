@@ -54,13 +54,13 @@ void sys_init(void)
 void main(void)
 {
     sys_init();
-    UART_sendString("MCU boot");
+    UART_sendString("MCU boot ...\n");
     WDT_setPrescale(WDT_prescale_32);
     WDT_cmd(ENABLE);
 
     while(true)
     {
-        /*feed watchdog per 500ms*/
+        /* feed watchdog per 500ms */
         sleep(500);
         WDT_feed();
         UART_sendString("root@localboard:Watch dog has been fed\r\n");

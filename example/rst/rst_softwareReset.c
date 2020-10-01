@@ -31,8 +31,8 @@ void sys_init(void)
 
     ec.mode     = EXTI_mode_fallEdge;
     ec.priority = UTIL_interruptPriority_0;
-    EXTI_config(PERIPH_EXTI_1,&ec);
-    EXTI_cmd(PERIPH_EXTI_1,ENABLE);
+    EXTI_config(PERIPH_EXTI_1, &ec);
+    EXTI_cmd(PERIPH_EXTI_1, ENABLE);
     enableAllInterrupts();
 }
 
@@ -51,9 +51,9 @@ void main(void)
     sys_init();
     while(true)
     {
-        GPIO_configBitValue(PERIPH_GPIO_1,PERIPH_GPIO_PIN_0,RESET);
+        GPIO_configBitValue(PERIPH_GPIO_1, PERIPH_GPIO_PIN_0, RESET);
         sleep(500);
-        GPIO_configBitValue(PERIPH_GPIO_1,PERIPH_GPIO_PIN_0,SET);
+        GPIO_configBitValue(PERIPH_GPIO_1, PERIPH_GPIO_PIN_0, SET);
         sleep(500);
     }
 }

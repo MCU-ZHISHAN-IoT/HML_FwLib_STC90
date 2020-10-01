@@ -323,7 +323,7 @@ int8_t zcli_action_h(void)
     zcli_printString(zcli_str_helpNote);
     for (i = 0; i < ZCLI_TABLE_LEN(zcli_command_table); i++)
     {
-        printf("\r\n%s",zcli_command_table[i].description);
+        printf("\r\n%s", zcli_command_table[i].description);
     }
 
     return 0;
@@ -384,6 +384,7 @@ int8_t zcli_action_io(void)
 
     /* get second parameter value, jump one blank first */
     i++;
+
     /* get hex number */
     if ((g_commandArguments[2][0] == '0') && (g_commandArguments[2][1] == 'x'))
     {
@@ -468,8 +469,8 @@ int8_t zcli_action_si(void)
 ******************************************************************************/
 int8_t zcli_action_v(void)
 {
-    printf("\r\nzCLI v%d.%d [%s]",ZCLI_VERSION_MAJOR, ZCLI_VERSION_MINOR, \
-ZCLI_TIMESTAMP_STRING);
+    printf("\r\nzCLI v%d.%d [%s]", ZCLI_VERSION_MAJOR, ZCLI_VERSION_MINOR, \
+                                   ZCLI_TIMESTAMP_STRING);
     zcli_printString(zcli_str_authorInfo);
     return 0;
 }

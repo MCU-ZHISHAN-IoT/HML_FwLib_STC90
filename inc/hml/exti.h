@@ -22,7 +22,7 @@
  *****************************************************************************/
 
 /**
- *\brief: mark EXTI module
+ * \brief mark EXTI module
  */
 typedef enum
 {
@@ -33,7 +33,7 @@ typedef enum
 } PERIPH_EXTI;
 
 /**
- *\brief: mark work mode
+ * \brief mark work mode
  */
 typedef enum
 {
@@ -46,7 +46,7 @@ typedef enum
  *****************************************************************************/
 
 /**
- *\brief: configuration structure for EXTI
+ * \brief configuration structure for EXTI
  */
 typedef struct
 {
@@ -57,9 +57,9 @@ typedef struct
 /*****************************************************************************
  *                          function declare                                 *
  *****************************************************************************/
-void EXTI_cmd(PERIPH_EXTI exti,Action a);
-void EXTI_config(PERIPH_EXTI exti,EXTI_configTypeDef *ec);
-void EXTI_setMode(PERIPH_EXTI exti,EXTI_mode mod);
-void EXTI_setPriority(PERIPH_EXTI exti,UTIL_interruptPriority p);
+void EXTI_cmd(PERIPH_EXTI exti, Action a);
+void EXTI_config(PERIPH_EXTI exti, EXTI_configTypeDef *ec);
+void EXTI_setMode(PERIPH_EXTI exti, EXTI_mode mode);
+void EXTI_setPriority(PERIPH_EXTI exti, UTIL_interruptPriority p);
 
 #endif

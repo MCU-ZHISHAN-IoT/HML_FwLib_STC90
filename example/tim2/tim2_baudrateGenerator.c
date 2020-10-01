@@ -3,7 +3,8 @@
  * \file         tim2_baudrateGenerator.c
  * \author       Amy Chung | zhongliguo@zhishan-iot.tk
  * \date         
- * \brief        a example which show how to use HML_FwLib_STC90 to use timer-2 as a baud rate generator
+ * \brief        a example which show how to use HML_FwLib_STC90 to use timer-2
+ *               as a baud rate generator
  * \note        
  * \version     v0.3
  * \ingroup     example
@@ -59,7 +60,7 @@ void main(void)
     {
         /* send per 500ms */
         sleep(500);
-        UART_sendString("Hello,world\r\n");
+        UART_sendString("Hello, world!\r\n");
     }
 }
 

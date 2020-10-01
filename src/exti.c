@@ -27,8 +27,8 @@
 ******************************************************************************/
 void EXTI_config(PERIPH_EXTI exti,EXTI_configTypeDef *ec)
 {
-    EXTI_setMode(exti,ec->mode);
-    EXTI_setPriority(exti,ec->priority);
+    EXTI_setMode(exti, ec->mode);
+    EXTI_setPriority(exti, ec->priority);
 }
 
 
@@ -43,7 +43,7 @@ void EXTI_config(PERIPH_EXTI exti,EXTI_configTypeDef *ec)
  * \ingroup     EXTI
  * \remarks     
 ******************************************************************************/
-void EXTI_cmd(PERIPH_EXTI exti,Action a)
+void EXTI_cmd(PERIPH_EXTI exti, Action a)
 {
     switch(exti)
     {
@@ -58,22 +58,22 @@ void EXTI_cmd(PERIPH_EXTI exti,Action a)
 /*****************************************************************************/
 /** 
  * \author      Weilun Fong
- * \date        
+ * \date        2020/10/01
  * \brief       configure work mode of target EXTI module
  * \param[in]   exti: target EXTI module
- * \param[in]   mod : expected work mode
+ * \param[in]   mode: expected work mode
  * \return      
  * \ingroup     EXTI
  * \remarks     
 ******************************************************************************/
-void EXTI_setMode(PERIPH_EXTI exti,EXTI_mode mod)
+void EXTI_setMode(PERIPH_EXTI exti, EXTI_mode mode)
 {
     switch(exti)
     {
-        case PERIPH_EXTI_0: IT0 = mod; break;
-        case PERIPH_EXTI_1: IT1 = mod; break;
-        case PERIPH_EXTI_2: IT2 = mod; break;
-        case PERIPH_EXTI_3: IT3 = mod; break;
+        case PERIPH_EXTI_0: IT0 = mode; break;
+        case PERIPH_EXTI_1: IT1 = mode; break;
+        case PERIPH_EXTI_2: IT2 = mode; break;
+        case PERIPH_EXTI_3: IT3 = mode; break;
         default: break;
     }
 }
@@ -89,29 +89,29 @@ void EXTI_setMode(PERIPH_EXTI exti,EXTI_mode mod)
  * \ingroup     EXTI
  * \remarks     
 ******************************************************************************/
-void EXTI_setPriority(PERIPH_EXTI exti,UTIL_interruptPriority p)
+void EXTI_setPriority(PERIPH_EXTI exti, UTIL_interruptPriority p)
 {
     switch(exti)
     {
         case PERIPH_EXTI_0:
         {
-            PX0 = TESTB(p,0);
-            CONFB(IPH,BIT_NUM_PX0H,TESTB(p,1));
+            PX0 = TESTB(p, 0);
+            CONFB(IPH, BIT_NUM_PX0H, TESTB(p, 1));
         } break;
         case PERIPH_EXTI_1:
         {
-            PX1 = TESTB(p,0);
-            CONFB(IPH,BIT_NUM_PX1H,TESTB(p,1));
+            PX1 = TESTB(p, 0);
+            CONFB(IPH, BIT_NUM_PX1H, TESTB(p, 1));
         } break;
         case PERIPH_EXTI_2:
         {
-            PX2 = TESTB(p,0);
-            CONFB(IPH,BIT_NUM_PX2H,TESTB(p,1));
+            PX2 = TESTB(p, 0);
+            CONFB(IPH, BIT_NUM_PX2H, TESTB(p, 1));
         } break;
         case PERIPH_EXTI_3:
         {
-            PX3 = TESTB(p,0);
-            CONFB(IPH,BIT_NUM_PX3H,TESTB(p,1));
+            PX3 = TESTB(p, 0);
+            CONFB(IPH, BIT_NUM_PX3H, TESTB(p, 1));
         } break;
         default:break;
     }

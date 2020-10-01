@@ -40,7 +40,7 @@ void sys_init(void)
     UART_config(&uc);
     enableAllInterrupts();
 
-    GPIO_configBitValue(PERIPH_GPIO_1,PERIPH_GPIO_PIN_0,SET);
+    GPIO_configBitValue(PERIPH_GPIO_1, PERIPH_GPIO_PIN_0, SET);
     ISP_cmd(ENABLE);
 }
 
@@ -60,14 +60,16 @@ void main(void)
 
     if(ISP_readByte(ISP_ADDR_START) == 'T')
     {
-        /* reset the module.if 'T' were written successfully,
-        P10 will be lighted*/
-        GPIO_configBitValue(PERIPH_GPIO_1,PERIPH_GPIO_PIN_0,RESET);
+        /**
+         * \note reset the module.if 'T' were written successfully,
+         *       P10 will be lighted
+         */
+        GPIO_configBitValue(PERIPH_GPIO_1, PERIPH_GPIO_PIN_0, RESET);
         ISP_eraseByte(ISP_ADDR_START);
     }
     else
     {
-        ISP_writeByte(ISP_ADDR_START,'T');
+        ISP_writeByte(ISP_ADDR_START, 'T');
         UART_sendByte(ISP_readByte(ISP_ADDR_START));  /* show result */
     }
 

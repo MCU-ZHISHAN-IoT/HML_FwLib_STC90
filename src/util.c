@@ -51,7 +51,7 @@ void enableAllInterrupts(void)
  * \param[in]   none
  * \return      none
  * \ingroup     UTIL
- * \remarks     private function, don' use it
+ * \remarks     private function, don't use it
 ******************************************************************************/
 uint16_t _sleep_getInitValue(void)
 {
@@ -66,7 +66,7 @@ uint16_t _sleep_getInitValue(void)
  * \param[in]   none
  * \return      none
  * \ingroup     UTIL
- * \remarks     private function, don' use it
+ * \remarks     private function, don't use it
 ******************************************************************************/
 void _sleep_1ms(void)
 {
@@ -148,7 +148,7 @@ void sleep(uint16_t t)
     __endasm;
 
     /**
-     * @note: disable SDCC warning
+     * \note disable SDCC warning
      */
     t = 0;
 }

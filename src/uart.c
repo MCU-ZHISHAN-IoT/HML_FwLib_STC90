@@ -25,7 +25,7 @@
 ******************************************************************************/
 void UART_cmd_multiBaudrate(Action a)
 {
-    CONFB(PCON,BIT_NUM_SMOD,a);
+    CONFB(PCON, BIT_NUM_SMOD, a);
 }
 
 /*****************************************************************************/
@@ -73,11 +73,11 @@ void UART_config(UART_configTypeDef *uc)
             tc.interruptState    = DISABLE;
             tc.interruptPriority = DISABLE;
             tc.mode              = TIM_mode_2;
-            tc.value             = UART_getBaudGeneratorInitValue(uc->baudrate,PERIPH_TIM_1);
-            TIM2_BAUD_cmd(TIM2_baudClock_receive | TIM2_baudClock_transmit,DISABLE);
-            TIM_config(PERIPH_TIM_1,&tc);
-            TIM_cmd(PERIPH_TIM_1,ENABLE);
-        } break; 
+            tc.value             = UART_getBaudGeneratorInitValue(uc->baudrate, PERIPH_TIM_1);
+            TIM2_BAUD_cmd(TIM2_baudClock_receive | TIM2_baudClock_transmit, DISABLE);
+            TIM_config(PERIPH_TIM_1, &tc);
+            TIM_cmd(PERIPH_TIM_1, ENABLE);
+        } break;
         case PERIPH_TIM_2:
         {
             tc2.function          = TIM2_function_tim;
@@ -85,11 +85,11 @@ void UART_config(UART_configTypeDef *uc)
             tc2.interruptPriority = DISABLE;
             tc2.mode              = TIM2_mode_2;
             tc2.value             = 0x00;
-            tc2.reloadValue       = UART_getBaudGeneratorInitValue(uc->baudrate,PERIPH_TIM_2);
-            TIM2_BAUD_cmd(TIM2_baudClock_receive | TIM2_baudClock_transmit,ENABLE);
+            tc2.reloadValue       = UART_getBaudGeneratorInitValue(uc->baudrate, PERIPH_TIM_2);
+            TIM2_BAUD_cmd(TIM2_baudClock_receive | TIM2_baudClock_transmit, ENABLE);
             TIM2_config(&tc2);
             TIM2_cmd(ENABLE);
-        } break;  
+        } break;
         default: break;
     }
 }
@@ -107,7 +107,7 @@ void UART_config(UART_configTypeDef *uc)
  * \ingroup     UART
  * \remarks     
 ******************************************************************************/
-uint16_t UART_getBaudGeneratorInitValue(uint32_t baud,PERIPH_TIM tim)
+uint16_t UART_getBaudGeneratorInitValue(uint32_t baud, PERIPH_TIM tim)
 {
     uint8_t tmp = 0x00;
 
@@ -280,14 +280,14 @@ void UART_setBaudrateGenerator(PERIPH_TIM tim)
  * \author      Weilun Fong
  * \date        
  * \brief       set work mode of UART module
- * \param[in]   m: expected work mode
+ * \param[in]   mode: expected work mode
  * \return      none
  * \ingroup     UART
  * \remarks     
 ******************************************************************************/
-void UART_setMode(UART_mode m)
+void UART_setMode(UART_mode mode)
 {
-    SCON = (SCON & 0x3F) | ((uint8_t)m << 0x6);
+    SCON = (SCON & 0x3F) | ((uint8_t)mode << 0x6);
 }
 
 /*****************************************************************************/
@@ -317,8 +317,8 @@ void UART_INT_cmd(Action a)
 ******************************************************************************/
 void UART_INT_setPriority(UTIL_interruptPriority p)
 {
-    PS  = TESTB(p,0);
-    CONFB(IPH,BIT_NUM_PSH,TESTB(p,1));
+    PS  = TESTB(p, 0);
+    CONFB(IPH, BIT_NUM_PSH, TESTB(p, 1));
 }
 
 #else
