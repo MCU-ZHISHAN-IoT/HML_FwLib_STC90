@@ -25,7 +25,7 @@
 ******************************************************************************/
 uint16_t TIM2_calculateValue(uint16_t t)
 {
-    if((t*(MCU_FRE_CLK/1000000)/MCU_PRESCALER) >= TIM2_MAXTICK)
+    if ((t*(MCU_FRE_CLK/1000000)/MCU_PRESCALER) >= TIM2_MAXTICK)
     {
         return 0;
     }
@@ -220,7 +220,7 @@ void TIM2_setValue(uint16_t val)
  * \remarks     this function is usually used to take place baud clock source
                 of UART from timer-1
 ******************************************************************************/
-void TIM2_BAUD_cmd(TIM2_baudClock t,Action a)
+void TIM2_BAUD_cmd(TIM2_baudClock t, Action a)
 {
     if (t & TIM2_baudClock_receive)
     {

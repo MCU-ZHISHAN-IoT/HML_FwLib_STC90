@@ -35,9 +35,9 @@ static __code char hexTable[16] = { '0','1','2','3','4','5','6','7','8','9','A',
 typedef enum
 {
     UART_mode_0 = 0x0,   /* 8-bit shift register */
-    UART_mode_1 = 0x1,   /* 8-bit UART,variable baud rate */
-    UART_mode_2 = 0x2,   /* 9-bit UART,baud rate = fosc/64 or fosc/32 */
-    UART_mode_3 = 0x3    /* 9-bit UART,variable baud rate */
+    UART_mode_1 = 0x1,   /* 8-bit UART, variable baud rate */
+    UART_mode_2 = 0x2,   /* 9-bit UART, baud rate = fosc/64 or fosc/32 */
+    UART_mode_3 = 0x3    /* 9-bit UART, variable baud rate */
 } UART_mode;
 
 /*****************************************************************************
@@ -72,7 +72,7 @@ void UART_sendByte(byte dat);
 void UART_sendHex(uint8_t hex);
 void UART_sendString(char *str);
 void UART_setBaudrateGenerator(PERIPH_TIM tim);
-void UART_setMode(UART_mode m);
+void UART_setMode(UART_mode mode);
 void UART_INT_cmd(Action a);
 void UART_INT_setPriority(UTIL_interruptPriority p);
 

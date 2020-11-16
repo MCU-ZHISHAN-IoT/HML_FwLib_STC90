@@ -25,7 +25,7 @@
  * \ingroup     EXTI
  * \remarks     
 ******************************************************************************/
-void EXTI_config(PERIPH_EXTI exti,EXTI_configTypeDef *ec)
+void EXTI_config(PERIPH_EXTI exti, EXTI_configTypeDef *ec)
 {
     EXTI_setMode(exti, ec->mode);
     EXTI_setPriority(exti, ec->priority);
@@ -45,7 +45,7 @@ void EXTI_config(PERIPH_EXTI exti,EXTI_configTypeDef *ec)
 ******************************************************************************/
 void EXTI_cmd(PERIPH_EXTI exti, Action a)
 {
-    switch(exti)
+    switch (exti)
     {
         case PERIPH_EXTI_0: EX0 = a; break;
         case PERIPH_EXTI_1: EX1 = a; break;
@@ -68,7 +68,7 @@ void EXTI_cmd(PERIPH_EXTI exti, Action a)
 ******************************************************************************/
 void EXTI_setMode(PERIPH_EXTI exti, EXTI_mode mode)
 {
-    switch(exti)
+    switch (exti)
     {
         case PERIPH_EXTI_0: IT0 = mode; break;
         case PERIPH_EXTI_1: IT1 = mode; break;
@@ -91,7 +91,7 @@ void EXTI_setMode(PERIPH_EXTI exti, EXTI_mode mode)
 ******************************************************************************/
 void EXTI_setPriority(PERIPH_EXTI exti, UTIL_interruptPriority p)
 {
-    switch(exti)
+    switch (exti)
     {
         case PERIPH_EXTI_0:
         {

@@ -158,7 +158,7 @@ void ISP_trig(void)
  * \ingroup     ISP
  * \remarks     
 ******************************************************************************/
-bool ISP_writeByte(uint16_t addr,byte dat)
+bool ISP_writeByte(uint16_t addr, byte dat)
 {
     if((addr < ISP_ADDR_START) || (addr > ISP_ADDR_END))
     {

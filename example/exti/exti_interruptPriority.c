@@ -12,10 +12,10 @@
 ******************************************************************************/
 
 /**
- * \note
- * (1) This file configures TIM0 priority as lowest priority(INTR_priority_0), 
- *     EXTI0's priority is lower priority(INTR_priority_1), and EXTI1 's priority 
- *     is highest(INTR_priority_1). At the same time, each interrupt source 
+ *\extra-note:
+ * (1) This file configures TIM0 priority as lowest priority(UTIL_interruptPriority_0), 
+ *     EXTI0's priority is lower priority(UTIL_interruptPriority_1), and EXTI1 's priority 
+ *     is highest(UTIL_interruptPriority_2). At the same time, each interrupt source 
  *     controls a blink LED with different gap time, higher priority means shorter 
  *     time(EXTI0: 250ms; EXTI1: 150ms; TIM0: 500ms;).
  * (2) On board ZS51-V1.0, pin INT0 and INT1 are connected to buttons so we can 
@@ -115,7 +115,7 @@ void tim0_isr(void) __interrupt TF0_VECTOR
 
     /* per 500ms */
     cnt++;
-    if(cnt == 10)
+    if (cnt == 10)
     {
         GPIO_toggleBitValue(PERIPH_LED, PERIPH_LED_TIM0);
         cnt = 0;
@@ -137,23 +137,23 @@ void exti0_isr(void) __interrupt IE0_VECTOR
     uint8_t i = 10;
 
     /* avoid shake */
-    EXTI_cmd(PERIPH_EXTI_0,DISABLE);
+    EXTI_cmd(PERIPH_EXTI_0, DISABLE);
     sleep(20);
 
     /* make sure the button pressed by P32(INT0) */
-    if(GPIO_getBitValue(PERIPH_KEY,PERIPH_KEY_EXTI0) == RESET)
+    if (GPIO_getBitValue(PERIPH_KEY, PERIPH_KEY_EXTI0) == RESET)
     {
-        GPIO_configPortValue(PERIPH_LED,0xFF);
-        while(i--)
+        GPIO_configPortValue(PERIPH_LED, 0xFF);
+        while (i--)
         {
-            GPIO_toggleBitValue(PERIPH_LED,PERIPH_LED_EXTI0);
+            GPIO_toggleBitValue(PERIPH_LED, PERIPH_LED_EXTI0);
             sleep(250);
         }
     }
 
     /* recover */
-    GPIO_configPortValue(PERIPH_LED,0xFF);
-    EXTI_cmd(PERIPH_EXTI_0,ENABLE);
+    GPIO_configPortValue(PERIPH_LED, 0xFF);
+    EXTI_cmd(PERIPH_EXTI_0, ENABLE);
 }
 
 /*****************************************************************************/
@@ -171,22 +171,22 @@ void exti1_isr(void) __interrupt IE1_VECTOR
     uint8_t j = 10;
 
     /* avoid shake */
-    EXTI_cmd(PERIPH_EXTI_1,DISABLE);
+    EXTI_cmd(PERIPH_EXTI_1, DISABLE);
     sleep(20);
     
     /* make sure the button pressed by P33(INT1) */
-    if(GPIO_getBitValue(PERIPH_KEY,PERIPH_KEY_EXTI1) == RESET)
+    if (GPIO_getBitValue(PERIPH_KEY, PERIPH_KEY_EXTI1) == RESET)
     {
-        GPIO_configPortValue(PERIPH_LED,0xFF);
-        while(j--)
+        GPIO_configPortValue(PERIPH_LED, 0xFF);
+        while (j--)
         {
-            GPIO_toggleBitValue(PERIPH_LED,PERIPH_LED_EXTI1);
+            GPIO_toggleBitValue(PERIPH_LED, PERIPH_LED_EXTI1);
             sleep(150);
         }
     }
 
     /* recover */
-    GPIO_configPortValue(PERIPH_LED,0xFF);
-    EXTI_cmd(PERIPH_EXTI_1,ENABLE);
+    GPIO_configPortValue(PERIPH_LED, 0xFF);
+    EXTI_cmd(PERIPH_EXTI_1, ENABLE);
 }
 
