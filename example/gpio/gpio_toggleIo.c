@@ -1,7 +1,7 @@
 /*****************************************************************************/
 /** 
  * \file        gpio_toggleIo.c
- * \author      Amy Chung | zhongliguo(at)zhishan-iot.tk
+ * \author      Amy Chung | zhongliguo@zhishan-iot.tk
  * \date        
  * \brief       a example which shows how to control target GPIO pin
  * \note        

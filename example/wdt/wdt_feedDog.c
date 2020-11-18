@@ -1,7 +1,7 @@
 /*****************************************************************************/
 /** 
  * \file        wdt_feedDog.c
- * \author      Amy Chung | zhongliguo(at)zhishan-iot.tk
+ * \author      Amy Chung | zhongliguo@zhishan-iot.tk
  * \date        
  * \brief       a demo for on-chip watchdog
  * \note        

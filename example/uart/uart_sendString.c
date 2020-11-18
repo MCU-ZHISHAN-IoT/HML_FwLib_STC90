@@ -1,8 +1,8 @@
 /*****************************************************************************/
 /** 
  * \file        uart_sendString.c
- * \author      Amy Chung   | zhongliguo(at)zhishan-iot.tk
- * \author      Weilun Fong | wlf(at)zhishan-iot.tk
+ * \author      Amy Chung   | zhongliguo@zhishan-iot.tk
+ * \author      Weilun Fong | wlf@zhishan-iot.tk
  * \date        
  * \brief       a example which shows how to send a string via UART
  * \note        

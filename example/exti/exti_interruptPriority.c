@@ -12,7 +12,7 @@
 ******************************************************************************/
 
 /**
- *\extra-note:
+ * \note
  * (1) This file configures TIM0 priority as lowest priority(UTIL_interruptPriority_0), 
  *     EXTI0's priority is lower priority(UTIL_interruptPriority_1), and EXTI1 's priority 
  *     is highest(UTIL_interruptPriority_2). At the same time, each interrupt source 

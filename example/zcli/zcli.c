@@ -724,8 +724,5 @@ void uart_isr(void) __interrupt SI0_VECTOR
         }
     }
 
-    /**
-     * recover
-     */
-    enableAllInterrupts();
+    enableAllInterrupts();  /* recover */
 }
