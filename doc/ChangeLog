@@ -73,4 +73,7 @@
            (7)optimize sleep function
            (8)correct the value of enumerated type 'TIM2_baudblock'
 
-
+>Version : v0.3.2
+ Alias   :
+ Date    : 2020-11-28
+ Note    : (1)adjust code comment and fix spelling mistakes
