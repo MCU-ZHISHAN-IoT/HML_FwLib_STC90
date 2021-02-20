@@ -32,27 +32,39 @@ void ISP_cmd(Action a)
 /*****************************************************************************/
 /** 
  * \author      Jiabin Hsu
- * \date        
+ * \date        2021/01/28
+ * \brief       set the wait time of cpu after isp model is triggered
+ * \param[in]   none
+ * \return      none
+ * \ingroup     ISP
+ * \remarks     call this function before using ISP module
+******************************************************************************/
+void ISP_config(void)
+{
+    ISP_CONTR = (ISP_CONTR & 0xF8) | ISP_WAITTIME;
+}
+
+/*****************************************************************************/
+/** 
+ * \author      Jiabin Hsu
+ * \date        2021/02/19
  * \brief       erase all data of specified ISP area
  * \param[in]   addr: address of target area
  * \return      complete to erase(true) or failed to execute operation(false)
  * \ingroup     ISP
  * \remarks     
 ******************************************************************************/
-bool ISP_eraseByte(uint16_t addr)
+bool ISP_eraseSector(uint16_t addr)
 {
     /* check address */
-    if((addr < ISP_ADDR_START) || (addr > ISP_ADDR_END))
+    if ((addr < ISP_ADDR_START) || (addr > ISP_ADDR_END))
     {
         return false;
     }
 
-    ISP_cmd(ENABLE);
     ISP_setAddress(addr);
     ISP_setCommand(ISP_command_erase);
     ISP_trig();
-    sleep(1);
-    ISP_idle();
 
     return true;
 }
@@ -60,25 +72,27 @@ bool ISP_eraseByte(uint16_t addr)
 /*****************************************************************************/
 /** 
  * \author      Jiabin Hsu
- * \date        
+ * \date        2021/02/19
  * \brief       make ISP module be in idle mode
  * \param[in]   
  * \return      none
  * \ingroup     ISP
- * \remarks     
+ * \remarks     After each Read/Write operation, call this function to prevent
+ *              misoperation to wrong target
 ******************************************************************************/
 void ISP_idle(void)
 {
-    ISP_cmd(DISABLE);
-    ISP_setAddress(0x0000);
+    /* 0xFFFF point to non-eeprom area */
+    ISP_setAddress(0xFFFF);
     ISP_setCommand(ISP_command_idle);
     ISP_DATA = 0xFF;
+    ISP_TRIG = 0x00;
 }
 
 /*****************************************************************************/
 /** 
  * \author      Jiabin Hsu
- * \date        
+ * \date        2021/02/19
  * \brief       read one byte of data form specified ISP area
  * \param[in]   addr: address of target area
  * \return      access result
@@ -89,13 +103,10 @@ byte ISP_readByte(uint16_t addr)
 {
     uint8_t dat = 0x00;
 
-    ISP_cmd(ENABLE);
     ISP_setAddress(addr);
     ISP_setCommand(ISP_command_read);
     ISP_trig();
-    sleep(1);
     dat = ISP_DATA;
-    ISP_idle();
 
     return dat;
 }
@@ -134,7 +145,7 @@ void ISP_setCommand(ISP_command cmd)
 /*****************************************************************************/
 /** 
  * \author      Jiabin Hsu
- * \date        
+ * \date        2021/02/19
  * \brief       trigger instruction
  * \param[in]   
  * \return      none
@@ -145,12 +156,15 @@ void ISP_trig(void)
 {
     ISP_TRIG = 0x46;
     ISP_TRIG = 0xB9;
+    __asm
+        nop ; MCU will hold here until ISP operation
+    __endasm;
 }
 
 /*****************************************************************************/
 /** 
  * \author      Jiabin Hsu
- * \date        
+ * \date        2021/02/19
  * \brief       write data to specified ISP area
  * \param[in]   addr: address of target ISP area
  * \param[in]   dat : one byte of data
@@ -160,19 +174,16 @@ void ISP_trig(void)
 ******************************************************************************/
 bool ISP_writeByte(uint16_t addr, byte dat)
 {
-    if((addr < ISP_ADDR_START) || (addr > ISP_ADDR_END))
+    if ((addr < ISP_ADDR_START) || (addr > ISP_ADDR_END))
     {
         return false;
     }
     else
     {
-        ISP_cmd(ENABLE);
         ISP_setAddress(addr);
         ISP_setCommand(ISP_command_write);
         ISP_DATA = dat;
         ISP_trig();
-        sleep(1);
-        ISP_idle();
 
         return true;
     }

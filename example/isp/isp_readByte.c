@@ -35,13 +35,13 @@ void sys_init(void)
     uc.interruptPriority = UTIL_interruptPriority_0;
     uc.mode              = UART_mode_1;
     uc.multiBaudrate     = DISABLE;
-    uc.receiveState      = ENABLE;
+    uc.receiveState      = DISABLE;
 
     UART_config(&uc);
-    enableAllInterrupts();
 
     GPIO_configBitValue(PERIPH_GPIO_1, PERIPH_GPIO_PIN_0, SET);
     ISP_cmd(ENABLE);
+    ISP_config();
 }
 
 /*****************************************************************************/
@@ -58,17 +58,18 @@ void main(void)
 {
     sys_init();
 
-    if(ISP_readByte(ISP_ADDR_START) == 'T')
+    if (ISP_readByte(ISP_ADDR_START) == 'T')
     {
         /**
          * \note reset the module.if 'T' were written successfully,
          *       P10 will be lighted
          */
         GPIO_configBitValue(PERIPH_GPIO_1, PERIPH_GPIO_PIN_0, RESET);
-        ISP_eraseByte(ISP_ADDR_START);
+        ISP_eraseSector(ISP_ADDR_START);
     }
     else
     {
+        ISP_eraseSector(ISP_ADDR_START);
         ISP_writeByte(ISP_ADDR_START, 'T');
         UART_sendByte(ISP_readByte(ISP_ADDR_START));  /* show result */
     }
