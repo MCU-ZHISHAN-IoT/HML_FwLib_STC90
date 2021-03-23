@@ -37,7 +37,8 @@
              - add header file hml.h instead of conf.h
              - refactor conf.h and refactor all configuration macro
              - add header file version.h for HML version information
-           (5)rename en enumeration type INTR_interruptPriority as UTIL_interruptPriority and move it to util.h from exit.h
+           (5)rename en enumeration type INTR_interruptPriority as UTIL_interruptPriority and move it
+              to util.h from exit.h
            (6)rename function WDT_clear as WDT_feed
            (7)update Makefile to v0.2.5
 
@@ -77,3 +78,14 @@
  Alias   :
  Date    : 2020-11-28
  Note    : (1)adjust code comment and fix spelling mistakes
+
+
+>Version : v0.3.3
+ Alias   :
+ Date    : 2021-03-23
+ Note    : (1)fix bugs in iap module:
+             - refactor function ISP_eraseByte, and rename as ISP_eraseSector
+             - add macro definition 'ISP_WAITTIME'
+           (2)fix bug in example of timer, add initial value reload step in interrupt service function
+           (3)fix bug in example of timer-2, cofig reload value register
+           (4)correct formula errors in timer/timer2, avoid overflow
