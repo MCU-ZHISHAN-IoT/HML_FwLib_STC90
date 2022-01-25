@@ -50,6 +50,7 @@ HML_FwLib_STC90
 ├─doc      # store related documents about HML_FwLib_STC90
 ├─example  # provide some example files with *.c format to help users learn about HML_FwLib_STC90
 ├─inc      # include all header files(*.h) of HML_FwLib_STC90
+├─mk       # store makefiles
 ├─obj      # store all output files, including *.hex,*.ihx,*.lk,*.rel and others during compilation
 ├─src      # store all source files(*.c) of HML_FwLib_STC90
 ├─usr      # store makefile and a source file which includes main function
@@ -74,7 +75,7 @@ This macro marks the model of target MCU and is defined in *hml/conf.h*.
 
 ### code & compile
 There is a source file named *test.c* under *usr* directory, we have put a main function here. User can add and modify own code
-here and check all build parameters in config Makefile(default: usr/Makefile.config, user can also specify them via make command
+here and check all build parameters in config Makefile(default: mk/config.mk, user can also specify them via make command
 line variable), then enter <kbd>make -j</kbd> in terminal, the Makefile will work and complete compilation. User can enter 
 <kbd>make help</kbd> to get all usages.
 
