@@ -1,12 +1,12 @@
 # ------------------------------------------------------------------------
 # Author     : Weilun Fong | wlf@zhishan-iot.tk
-# Date       : 2022-01-16
+# Date       : 2022-03-13
 # Description: obtain project version
 # E-mail     : mcu@zhishan-iot.tk
 # Make-tool  : CMake
 # Page       : https://hw.zhishan-iot.tk/page/hml/detail/fwlib_stc90.html
 # Project    : HML_FwLib_STC90
-# Version    : v0.0.1
+# Version    : v0.0.2
 # ------------------------------------------------------------------------
 
 # Read version string from file VERSION
